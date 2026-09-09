@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boda de Sandra & Dani | 22.05.2027</title>
+    <!-- Fuentes elegantes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-primary: #8b2665; /* Magenta/Burgundy elegante */
+            --color-primary-dark: #631746;
+            --color-secondary: #1a365d; /* Azul marino distinguido */
+            --color-accent: #d4af37; /* Dorado cálido */
+            --color-bg: #fcf8fa;
+            --color-card: #ffffff;
+            --color-text: #2c3e50;
+            --color-text-light: #666666;
+            --color-success: #28a745;
+            --color-danger: #dc3545;
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            padding-top: 70px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            font-weight: 400;
+        }
+
+        /* --- BARRA DE NAVEGACIÓN Y MENÚ HAMBURGUESA COLAPSABLE --- */
+        nav.navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            background: #ffffff;
+            border-bottom: 1px solid rgba(139, 38, 101, 0.15);
+            z-index: 9999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+
+        .nav-logo {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+
+        .hamburger-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--color-primary);
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-secondary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Selector de Idioma Flotante dentro de la Nav */
+        .lang-switch-container {
+            background: rgba(139, 38, 101, 0.08);
+            border-radius: 20px;
+            padding: 3px;
+            display: flex;
+            gap: 2px;
+        }
+
+        .lang-btn {
+            border: none;
+            background: transparent;
+            padding: 5px 12px;
+            border-radius: 16px;
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        /* Container flex a la izquierda en móvil */
+        .nav-left-group {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Hero / Cabecera */
+        header {
+            position: relative;
+            height: calc(100vh - 70px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background-image: linear-gradient(to bottom, rgba(26, 20, 35, 0.55), rgba(26, 20, 35, 0.70)), 
+                              url('1000097874.jpg');
+            background-position: center 30%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: white;
+            overflow: hidden;
+        }
+
+        header p.subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #f5e6f0;
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            font-size: 4.2rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        header .date-badge {
+            font-size: 1.4rem;
+            font-family: var(--font-serif);
+            border-top: 1px solid rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+            padding: 8px 25px;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+
+        header .start-info {
+            margin-top: 15px;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            color: #f8f9fa;
+            font-weight: 400;
+        }
+
+        /* Countdown */
+        .countdown-container {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+            background: rgba(139, 38, 101, 0.35);
+            padding: 15px 30px;
+            border-radius: 12px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-number {
+            font-family: var(--font-serif);
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .countdown-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #f3e5f0;
+        }
+
+        /* Secciones Generales */
+        section {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: var(--color-primary);
+        }
+
+        .section-desc {
+            color: var(--color-text-light);
+            margin-bottom: 40px;
+            font-size: 1.05rem;
+        }
+
+        /* Tarjetas de Ubicación */
+        .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .location-card {
+            background: var(--color-card);
+            border-radius: 12px;
+            padding: 35px 25px;
+            box-shadow: 0 10px 30px rgba(139, 38, 101, 0.08);
+            border: 1px solid #f2e2ed;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .location-card h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--color-secondary);
+        }
+
+        .location-card .tag {
+            color: var(--color-primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+
+        .location-card .time-badge {
+            display: inline-block;
+            background-color: #f8eaf3;
+            color: var(--color-primary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            padding: 4px 12px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .location-card p {
+            color: var(--color-text-light);
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--color-primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--color-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 38, 101, 0.25);
+        }
+
+        /* --- SECCIÓN AUTOBÚS --- */
+        .bus-section {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 50px 30px;
+            margin: 40px auto;
+            box-shadow: 0 10px 30px rgba(139, 38, 101, 0.06);
+            border: 1px solid #f0dfeb;
+        }
+
+        .bus-timeline-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        .bus-card {
+            background: #fdf8fb;
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid #ebd3e3;
+            position: relative;
+        }
+
+        .bus-card-title {
+            font-size: 1.5rem;
+            color: var(--color-secondary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #e8d0e0;
+            padding-bottom: 10px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+            border-left: 3px solid var(--color-primary);
+            margin-left: 10px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -27px;
+            top: 4px;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background-color: var(--color-primary);
+            border: 2px solid white;
+        }
+
+        .timeline-time {
+            font-weight: 700;
+            color: var(--color-primary);
+            font-size: 1rem;
+        }
+
+        .timeline-location {
+            font-weight: 600;
+            color: var(--color-secondary);
+            font-size: 0.95rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+        }
+
+        /* --- FORMULARIO RSVP --- */
+        .rsvp-section {
+            background-color: #f7ebf3;
+            border-radius: 20px;
+            padding: 60px 30px;
+            max-width: 800px;
+            margin: 40px auto 80px;
+            border: 1px solid #eed3e5;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--color-secondary);
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #dcc0d4;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            background-color: white;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(139, 38, 101, 0.15);
+        }
+
+        .btn-group-toggle {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .btn-toggle {
+            flex: 1;
+            min-width: 120px;
+            padding: 12px 14px;
+            background-color: white;
+            border: 2px solid #dcc0d4;
+            border-radius: 10px;
+            color: var(--color-secondary);
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-toggle:hover {
+            border-color: var(--color-primary);
+            background-color: #fdf5f9;
+        }
+
+        .btn-toggle.active-green {
+            background-color: var(--color-success) !important;
+            border-color: var(--color-success) !important;
+            color: white !important;
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+        }
+
+        .btn-toggle.active-red {
+            background-color: var(--color-danger) !important;
+            border-color: var(--color-danger) !important;
+            color: white !important;
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+        }
+
+        .btn-toggle.active-primary {
+            background-color: var(--color-primary) !important;
+            border-color: var(--color-primary) !important;
+            color: white !important;
+            box-shadow: 0 4px 12px rgba(139, 38, 101, 0.3);
+        }
+
+        /* --- TARJETAS COLAPSABLES ACCORDION --- */
+        .person-card {
+            background: #ffffff;
+            border: 1px solid #dcc0d4;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            text-align: left;
+        }
+
+        .person-card-header {
+            background: #fdf5f9;
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            border-bottom: 1px solid #f0d5e6;
+            transition: background 0.3s ease;
+        }
+
+        .person-card-header:hover {
+            background: #f8ebf3;
+        }
+
+        .person-card-header h4 {
+            font-size: 1.1rem;
+            color: var(--color-primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .person-card-body {
+            padding: 20px;
+            display: none;
+        }
+
+        .person-card-body.open {
+            display: block;
+        }
+
+        .toggle-icon {
+            font-size: 1.2rem;
+            color: var(--color-primary);
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-icon.rotated {
+            transform: rotate(180deg);
+        }
+
+        .btn-delete-companion {
+            background: #ffebe8;
+            color: var(--color-danger);
+            border: 1px solid #fbcac3;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .btn-delete-companion:hover {
+            background: var(--color-danger);
+            color: white;
+        }
+
+        .btn-add-companion {
+            background-color: white;
+            color: var(--color-primary);
+            border: 2px dashed var(--color-primary);
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .btn-add-companion:hover {
+            background-color: #fcf2f8;
+        }
+
+        .status-msg {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .status-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .status-error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            background-color: var(--color-primary);
+            color: white;
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+        }
+
+        /* Estilos Adaptables / Móvil */
+        @media (max-width: 768px) {
+            body { padding-top: 60px; }
+            nav.navbar { height: 60px; padding: 0 20px; }
+            
+            .hamburger-btn { display: block; }
+
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: #ffffff;
+                flex-direction: column;
+                gap: 0;
+                border-bottom: 1px solid rgba(139, 38, 101, 0.15);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                display: none; /* Colapsado en móvil */
+                padding: 10px 0;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 12px 0;
+                width: 100%;
+                border-bottom: 1px solid #f8ebf3;
+            }
+
+            header h1 { font-size: 2.8rem; }
+            .countdown-container { gap: 10px; padding: 10px 15px; }
+            .countdown-number { font-size: 2rem; }
+            section { padding: 40px 15px; }
+            .bus-timeline-grid { grid-template-columns: 1fr; }
+            .btn-toggle { min-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN REESTRUCTURADA CON HAMBURGUESA A LA IZQUIERDA Y SELECTOR A LA DERECHA -->
+    <nav class="navbar">
+        <div class="nav-left-group">
+            <button class="hamburger-btn" onclick="toggleNavMenu()" aria-label="Abrir menú">☰</button>
+            <a href="#hero" class="nav-logo">S & D</a>
+        </div>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#onde-e-cando" id="nav-item-where" onclick="closeNavMenu()">Onde & Cando</a></li>
+            <li><a href="#autobuses" id="nav-item-bus" onclick="closeNavMenu()">Autobuses</a></li>
+            <li><a href="#rsvp" id="nav-item-rsvp" onclick="closeNavMenu()">Confirmación</a></li>
+        </ul>
+
+        <div class="lang-switch-container">
+            <button class="lang-btn" id="btn-es" onclick="switchLanguage('es')">ES</button>
+            <button class="lang-btn active" id="btn-gl" onclick="switchLanguage('gl')">GL</button>
+        </div>
+    </nav>
+
+    <!-- CABECERA (HERO) -->
+    <header id="hero">
+        <p class="subtitle" id="i18n-hero-subtitle">¡Casamos!</p>
+        <h1>Sandra & Dani</h1>
+        <div class="date-badge" id="i18n-hero-date">22 DE MAIO DE 2027</div>
+        <p class="start-info" id="i18n-hero-start">18:00 h — Igrexa de San Rosendo (Celanova)</p>
+
+        <!-- Cuenta Atrás -->
+        <div class="countdown-container">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">00</span>
+                <span class="countdown-label" id="i18n-cd-days">Días</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label" id="i18n-cd-hours">Horas</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label" id="i18n-cd-min">Min</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label" id="i18n-cd-sec">Seg</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- UBICACIONES Y EVENTOS -->
+    <section id="onde-e-cando">
+        <h2 class="section-title" id="i18n-where-title">Onde & Cando</h2>
+        <p class="section-desc" id="i18n-where-desc">Queremos compartir este día tan especial con todos vós. Aquí tendes todos os detalles das celebracións.</p>
+
+        <div class="locations-grid">
+            <!-- Ceremonia -->
+            <div class="location-card">
+                <div>
+                    <div class="tag" id="i18n-ceremony-tag">Ceremonia Relixiosa</div>
+                    <div class="time-badge">18:00 h</div>
+                    <h3 id="i18n-ceremony-place">Igrexa de San Rosendo</h3>
+                    <p>Praza do Maior, s/n, 32900 Celanova, Ourense</p>
+                </div>
+                <div>
+                    <a href="https://maps.google.com/?q=Iglesia+de+San+Rosendo+Celanova" target="_blank" class="btn" id="i18n-btn-maps-1">Ver en Google Maps</a>
+                </div>
+            </div>
+
+            <!-- Banquete -->
+            <div class="location-card">
+                <div>
+                    <div class="tag" id="i18n-reception-tag">Banquete & Festa</div>
+                    <div class="time-badge" id="i18n-reception-time">A continuación</div>
+                    <h3>Jardines Pazo A Fábrica</h3>
+                    <p>Lugar A Fábrica, Celanova, Ourense</p>
+                </div>
+                <div>
+                    <a href="https://maps.google.com/?q=Jardines+Pazo+A+Fabrica+Celanova" target="_blank" class="btn" id="i18n-btn-maps-2">Ver en Google Maps</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN HORARIOS DE AUTOBÚS -->
+    <section id="autobuses" class="bus-section">
+        <h2 class="section-title" id="i18n-bus-section-title">Servizo de Autobús</h2>
+        <p class="section-desc" id="i18n-bus-section-desc">Para a vosa comodidade, poñemos á vosa disposición un servizo de autobús con parada de orixe e destino na parada de autobús do Parque de San Lázaro (Ourense).</p>
+
+        <div class="bus-timeline-grid">
+            <!-- Bus de Ida -->
+            <div class="bus-card">
+                <div class="bus-card-title" id="i18n-bus-outbound-title">
+                    🚌 Autobús de Ida
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-time">16:45 h</div>
+                        <div class="timeline-location" id="i18n-bus-out1-loc">Saída desde Ourense</div>
+                        <div class="timeline-desc" id="i18n-bus-out1-desc">Parada de autobús do Parque de San Lázaro</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">17:30 h</div>
+                        <div class="timeline-location" id="i18n-bus-out2-loc">Chegada á Igrexa de San Rosendo</div>
+                        <div class="timeline-desc" id="i18n-bus-out2-desc">Celanova (Ceremonia relixiosa ás 18:00 h)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">19:15 h</div>
+                        <div class="timeline-location" id="i18n-bus-out3-loc">Traslado a Jardines Pazo A Fábrica</div>
+                        <div class="timeline-desc" id="i18n-bus-out3-desc">Chegada para o aperitivo de benvida</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bus de Vuelta -->
+            <div class="bus-card">
+                <div class="bus-card-title" id="i18n-bus-return-title">
+                    🚌 Autobús de Volta
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-time">02:30 h</div>
+                        <div class="timeline-location" id="i18n-bus-ret1-loc">Primeira saída de volta</div>
+                        <div class="timeline-desc" id="i18n-bus-ret1-desc">Desde Jardines Pazo A Fábrica cara á parada do Parque de San Lázaro (Ourense)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">05:00 h</div>
+                        <div class="timeline-location" id="i18n-bus-ret2-loc">Saída de fin de festa</div>
+                        <div class="timeline-desc" id="i18n-bus-ret2-desc">Desde Jardines Pazo A Fábrica cara á parada do Parque de San Lázaro (Ourense)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO RSVP -->
+    <section class="rsvp-section" id="rsvp">
+        <h2 class="section-title" id="i18n-rsvp-title">Confirmación de Asistencia</h2>
+        <p class="section-desc" id="i18n-rsvp-desc">Por favor, confirma a túa asistencia antes do 1 de maio de 2027 para axudarnos a organizalo todo.</p>
+
+        <form id="rsvpForm">
+            
+            <!-- TARJETA DEL INVITADO PRINCIPAL -->
+            <div class="person-card" id="main_person_card">
+                <div class="person-card-header" onclick="toggleAccordion('main')">
+                    <h4 id="i18n-main-person-title">👤 Invitado/a Principal</h4>
+                    <span class="toggle-icon rotated" id="icon_main">▼</span>
+                </div>
+                <div class="person-card-body open" id="body_main">
+                    <div class="form-group">
+                        <label for="nombre" id="i18n-label-firstname">Nome *</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="O teu nome" required oninput="updateMainCardTitle()">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="primerApellido" id="i18n-label-lastname1">Primeiro Apelido *</label>
+                        <input type="text" id="primerApellido" name="primerApellido" placeholder="O teu primeiro apelido" required oninput="updateMainCardTitle()">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="segundoApellido" id="i18n-label-lastname2">Segundo Apelido *</label>
+                        <input type="text" id="segundoApellido" name="segundoApellido" placeholder="O teu segundo apelido" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label id="i18n-label-attending">¿Acompañarasnos? *</label>
+                        <input type="hidden" id="asistencia" name="asistencia" required>
+                        <div class="btn-group-toggle">
+                            <button type="button" class="btn-toggle" id="btn-attending-yes" onclick="selectAttendance('Sí')">
+                                ¡Si, alí estarei!
+                            </button>
+                            <button type="button" class="btn-toggle" id="btn-attending-no" onclick="selectAttendance('No')">
+                                Síntoo, non podo
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- CAMPOS OPCIONALES TITULAR -->
+                    <div id="conditionalFields" style="display:none;">
+                        <div class="form-group">
+                            <label id="i18n-label-bus">¿Utilizarás o servizo de autobús desde Ourense (Parque San Lázaro)? *</label>
+                            <input type="hidden" id="autobus" name="autobus">
+                            <div class="btn-group-toggle">
+                                <button type="button" class="btn-toggle" id="btn-bus-no" onclick="selectBus('main', 'No')">Non</button>
+                                <button type="button" class="btn-toggle" id="btn-bus-ida" onclick="selectBus('main', 'Sólo ida')">Só ida</button>
+                                <button type="button" class="btn-toggle" id="btn-bus-volta" onclick="selectBus('main', 'Sólo vuelta')">Só volta</button>
+                                <button type="button" class="btn-toggle" id="btn-bus-idavolta" onclick="selectBus('main', 'Ida e volta')">Ida e volta</button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label id="i18n-label-diet-options">Suxestións de menú / Preferencias alimentarias *</label>
+                            <input type="hidden" id="tipoMenu" name="tipoMenu">
+                            <div class="btn-group-toggle" id="dietGroup_main">
+                                <button type="button" class="btn-toggle" data-diet="Ninguna" onclick="selectDiet('main', 'Ninguna')">Ningunha</button>
+                                <button type="button" class="btn-toggle" data-diet="Celíaco/a" onclick="selectDiet('main', 'Celíaco/a')">Celíaco/a</button>
+                                <button type="button" class="btn-toggle" data-diet="Vexetariano/a" onclick="selectDiet('main', 'Vexetariano/a')">Vexetariano/a</button>
+                                <button type="button" class="btn-toggle" data-diet="Vegano/a" onclick="selectDiet('main', 'Vegano/a')">Vegano/a</button>
+                                <button type="button" class="btn-toggle" data-diet="Alergias" onclick="selectDiet('main', 'Alergias')">Alerxias</button>
+                                <button type="button" class="btn-toggle" data-diet="Otra" onclick="selectDiet('main', 'Otra')">Outra</button>
+                            </div>
+
+                            <div id="dietaryDetailGroup_main" style="display:none; margin-top: 12px;">
+                                <label for="intoleranciasDetalle" id="i18n-label-diet-detail" style="font-size: 0.85rem;">Especifica as túas alerxias ou necesidades alimentarias *</label>
+                                <input type="text" id="intoleranciasDetalle" name="intoleranciasDetalle" placeholder="Ex: Alerxía aos mariscos...">
+                            </div>
+                        </div>
+
+                        <!-- SUGERENCIA MUSICAL Y MENSAJE INCLUIDOS INDIVIDUALMENTE -->
+                        <div class="form-group" style="margin-top: 20px;">
+                            <label for="cancion_main" id="i18n-label-song-main">¿Que canción non pode faltar na festa? (Opcional)</label>
+                            <input type="text" id="cancion_main" name="cancion" placeholder="A túa suxestión musical">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mensaje_main" id="i18n-label-msg-main">Información adicional a ter en conta, suxestións ou un mensaxe para os noivos (Opcional)</label>
+                            <textarea id="mensaje_main" name="mensaje" rows="3" placeholder="¡Déixanos a túa mensaxe ou calquera dato que debamos saber!"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN ACOMPAÑANTES EN FORMATO DESPLEGABLE -->
+            <div id="companionsSection" style="display: none; margin-top: 30px;">
+                <div id="companionsContainer"></div>
+                <button type="button" class="btn-add-companion" id="btnAddCompanion" onclick="addCompanion()">
+                    ➕ Engadir acompañante
+                </button>
+            </div>
+
+            <button type="submit" id="submitBtn" class="btn" style="width: 100%; font-size: 1rem; padding: 15px; margin-top: 25px;">Enviar Confirmación</button>
+            <div id="statusMsg" class="status-msg"></div>
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Sandra & Dani — 22.05.2027</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // URL DE GOOGLE APPS SCRIPT
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyxrIBbepFUU_swfVEw4zsYMJILUboDtHmhLwO5cMkcxPSoppza0q7boK-MFioGjPnh/exec";
+
+        // --- NAVEGACIÓN HAMBURGUESA / MENÚ COLAPSABLE ---
+        function toggleNavMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('open');
+        }
+
+        function closeNavMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.remove('open');
+        }
+
+        // --- 1. TRADUCCIONES (i18n) ---
+        const translations = {
+            es: {
+                title: "Boda de Sandra & Dani | 22.05.2027",
+                navWhere: "Dónde & Cuándo",
+                navBus: "Autobuses",
+                navRsvp: "Confirmación",
+                heroSubtitle: "¡Nos casamos!",
+                heroDate: "22 DE MAYO DE 2027",
+                heroStart: "18:00 h — Iglesia de San Rosendo (Celanova)",
+                cdDays: "Días",
+                cdHours: "Horas",
+                cdMin: "Min",
+                cdSec: "Seg",
+                whereTitle: "Dónde & Cuándo",
+                whereDesc: "Queremos compartir este día tan especial con todos vosotros. Aquí tenéis todos los detalles de las celebraciones.",
+                ceremonyTag: "Ceremonia Religiosa",
+                ceremonyPlace: "Iglesia de San Rosendo",
+                receptionTag: "Banquete & Fiesta",
+                receptionTime: "A continuación",
+                btnMaps: "Ver en Google Maps",
+                
+                // Autobús Visual
+                busSectionTitle: "Servicio de Autobús",
+                busSectionDesc: "Para vuestra comodidad, ponemos a vuestra disposición un servicio de autobús con parada de origen y destino en la parada de autobús del Parque de San Lázaro (Ourense).",
+                busOutboundTitle: "🚌 Autobús de Ida",
+                busOut1Loc: "Salida desde Ourense (16:45 h)",
+                busOut1Desc: "Parada de autobús del Parque de San Lázaro",
+                busOut2Loc: "Llegada a la Iglesia de San Rosendo",
+                busOut2Desc: "Celanova (Ceremonia religiosa a las 18:00 h)",
+                busOut3Loc: "Traslado a Jardines Pazo A Fábrica",
+                busOut3Desc: "Llegada para el aperitivo de bienvenida",
+                busReturnTitle: "🚌 Autobús de Vuelta",
+                busRet1Loc: "Primera salida de vuelta",
+                busRet1Desc: "Desde Jardines Pazo A Fábrica hacia la parada del Parque de San Lázaro (Ourense)",
+                busRet2Loc: "Salida de fin de fiesta",
+                busRet2Desc: "Desde Jardines Pazo A Fábrica hacia la parada del Parque de San Lázaro (Ourense)",
+
+                // RSVP
+                rsvpTitle: "Confirmación de Asistencia",
+                rsvpDesc: "Por favor, confirma tu asistencia antes del 1 de mayo de 2027 para ayudarnos a organizarlo todo.",
+                mainPersonTitle: "👤 Invitado/a Principal",
+                labelFirstname: "Nombre *",
+                placeholderFirstname: "Tu nombre",
+                labelLastname1: "Primer Apellido *",
+                placeholderLastname1: "Tu primer apellido",
+                labelLastname2: "Segundo Apellido *",
+                placeholderLastname2: "Tu segundo apellido",
+                labelAttending: "¿Nos acompañarás? *",
+                radioYes: "¡Sí, allí estaré!",
+                radioNo: "Lo siento, no puedo",
+                labelBus: "¿Utilizarás el servicio de autobús desde Ourense (Parque San Lázaro)? *",
+                busNo: "No lo usaré",
+                busIda: "Solo ida",
+                busVolta: "Solo vuelta",
+                busIdaVolta: "Ida y vuelta",
+
+                labelDietOptions: "Sugerencias de menú / Preferencias alimentarias *",
+                dietNinguna: "Ninguna",
+                dietCeliaco: "Celíaco/a",
+                dietVegetariano: "Vegetariano/a",
+                dietVegano: "Vegano/a",
+                dietAlergia: "Alergias",
+                dietOtra: "Otra",
+                labelDietDetail: "Especifica tus alergias o necesidades alimentarias *",
+                placeholderDietDetail: "Ej: Alergia al marisco, intolerancia a la lactosa...",
+
+                btnAddCompanion: "➕ Añadir acompañante",
+                companionHeaderTitle: "👤 Acompañante",
+                labelDeleteComp: "Eliminar",
+
+                labelSong: "¿Qué canción no puede faltar en la fiesta? (Opcional)",
+                placeholderSong: "Tu sugerencia musical",
+                labelMsg: "Información adicional a tener en cuenta, sugerencias o un mensaje para los novios (Opcional)",
+                placeholderMsg: "¡Déjanos tu mensaje o cualquier dato que debamos saber!",
+                submitBtn: "Enviar Confirmación",
+                sendingBtn: "Enviando...",
+                alertSuccess: "¡Gracias por confirmar!",
+                alertRequired: "Por favor, rellena todos los campos obligatorios (*).",
+                alertMaxCompanions: "Se permite un máximo de 4 acompañantes.",
+                msgSuccess: "¡Gracias por confirmar! Hemos recibido tus datos correctamente.",
+                msgError: "Hubo un error al enviar la respuesta. Por favor, inténtalo de nuevo."
+            },
+            gl: {
+                title: "Boda de Sandra & Dani | 22.05.2027",
+                navWhere: "Onde & Cando",
+                navBus: "Autobuses",
+                navRsvp: "Confirmación",
+                heroSubtitle: "¡Casamos!",
+                heroDate: "22 DE MAIO DE 2027",
+                heroStart: "18:00 h — Igrexa de San Rosendo (Celanova)",
+                cdDays: "Días",
+                cdHours: "Horas",
+                cdMin: "Min",
+                cdSec: "Seg",
+                whereTitle: "Onde & Cando",
+                whereDesc: "Queremos compartir este día tan especial con todos vós. Aquí tendes todos os detalles das celebracións.",
+                ceremonyTag: "Ceremonia Relixiosa",
+                ceremonyPlace: "Igrexa de San Rosendo",
+                receptionTag: "Banquete & Festa",
+                receptionTime: "A continuación",
+                btnMaps: "Ver en Google Maps",
+
+                // Autobús Visual
+                busSectionTitle: "Servizo de Autobús",
+                busSectionDesc: "Para a vosa comodidade, poñemos á vosa disposición un servizo de autobús con parada de orixe e destino na parada de autobús do Parque de San Lázaro (Ourense).",
+                busOutboundTitle: "🚌 Autobús de Ida",
+                busOut1Loc: "Saída desde Ourense (16:45 h)",
+                busOut1Desc: "Parada de autobús do Parque de San Lázaro",
+                busOut2Loc: "Chegada á Igrexa de San Rosendo",
+                busOut2Desc: "Celanova (Ceremonia relixiosa ás 18:00 h)",
+                busOut3Loc: "Traslado a Jardines Pazo A Fábrica",
+                busOut3Desc: "Chegada para o aperitivo de benvida",
+                busReturnTitle: "🚌 Autobús de Volta",
+                busRet1Loc: "Primeira saída de volta",
+                busRet1Desc: "Desde Jardines Pazo A Fábrica cara á parada do Parque de San Lázaro (Ourense)",
+                busRet2Loc: "Saída de fin de festa",
+                busRet2Desc: "Desde Jardines Pazo A Fábrica cara á parada do Parque de San Lázaro (Ourense)",
+
+                // RSVP
+                rsvpTitle: "Confirmación de Asistencia",
+                rsvpDesc: "Por favor, confirma a túa asistencia antes do 1 de maio de 2027 para axudarnos a organizalo todo.",
+                mainPersonTitle: "👤 Invitado/a Principal",
+                labelFirstname: "Nome *",
+                placeholderFirstname: "O teu nome",
+                labelLastname1: "Primeiro Apelido *",
+                placeholderLastname1: "O teu primeiro apelido",
+                labelLastname2: "Segundo Apelido *",
+                placeholderLastname2: "O teu segundo apelido",
+                labelAttending: "¿Acompañarasnos? *",
+                radioYes: "¡Si, alí estarei!",
+                radioNo: "Síntoo, non podo",
+                labelBus: "¿Utilizarás o servizo de autobús desde Ourense (Parque San Lázaro)? *",
+                busNo: "Non o usarei",
+                busIda: "Só ida",
+                busVolta: "Só volta",
+                busIdaVolta: "Ida e volta",
+
+                labelDietOptions: "Suxestións de menú / Preferencias alimentarias *",
+                dietNinguna: "Ningunha",
+                dietCeliaco: "Celíaco/a",
+                dietVegetariano: "Vexetariano/a",
+                dietVegano: "Vegano/a",
+                dietAlergia: "Alerxias",
+                dietOtra: "Outra",
+                labelDietDetail: "Especifica as túas alerxias ou necesidades alimentarias *",
+                placeholderDietDetail: "Ex: Alerxía aos mariscos...",
+
+                btnAddCompanion: "➕ Engadir acompañante",
+                companionHeaderTitle: "👤 Acompañante",
+                labelDeleteComp: "Eliminar",
+
+                labelSong: "¿Que canción non pode faltar na festa? (Opcional)",
+                placeholderSong: "A túa suxestión musical",
+                labelMsg: "Información adicional a ter en conta, suxestións ou un mensaxe para os noivos (Opcional)",
+                placeholderMsg: "¡Déixanos a túa mensaxe ou calquera dato que debamos saber!",
+                submitBtn: "Enviar Confirmación",
+                sendingBtn: "Enviando...",
+                alertSuccess: "¡Grazas por confirmar!",
+                alertRequired: "Por favor, enche todos os campos obrigatorios (*).",
+                alertMaxCompanions: "Permítese un máximo de 4 acompañantes.",
+                msgSuccess: "¡Grazas por confirmar! Recibimos os teus datos correctamente.",
+                msgError: "Houve un erro ao enviar a resposta. Por favor, inténtao de novo."
+            }
+        };
+
+        let currentLang = 'gl';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            const t = translations[lang];
+
+            document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+            document.getElementById('btn-gl').classList.toggle('active', lang === 'gl');
+            document.documentElement.lang = lang;
+
+            document.title = t.title;
+
+            // Nav links
+            document.getElementById('nav-item-where').innerText = t.navWhere;
+            document.getElementById('nav-item-bus').innerText = t.navBus;
+            document.getElementById('nav-item-rsvp').innerText = t.navRsvp;
+
+            // Header & Countdown
+            document.getElementById('i18n-hero-subtitle').innerText = t.heroSubtitle;
+            document.getElementById('i18n-hero-date').innerText = t.heroDate;
+            document.getElementById('i18n-hero-start').innerText = t.heroStart;
+            document.getElementById('i18n-cd-days').innerText = t.cdDays;
+            document.getElementById('i18n-cd-hours').innerText = t.cdHours;
+            document.getElementById('i18n-cd-min').innerText = t.cdMin;
+            document.getElementById('i18n-cd-sec').innerText = t.cdSec;
+
+            document.getElementById('i18n-where-title').innerText = t.whereTitle;
+            document.getElementById('i18n-where-desc').innerText = t.whereDesc;
+            document.getElementById('i18n-ceremony-tag').innerText = t.ceremonyTag;
+            document.getElementById('i18n-ceremony-place').innerText = t.ceremonyPlace;
+            document.getElementById('i18n-reception-tag').innerText = t.receptionTag;
+            document.getElementById('i18n-reception-time').innerText = t.receptionTime;
+            document.getElementById('i18n-btn-maps-1').innerText = t.btnMaps;
+            document.getElementById('i18n-btn-maps-2').innerText = t.btnMaps;
+
+            // Bus Section
+            document.getElementById('i18n-bus-section-title').innerText = t.busSectionTitle;
+            document.getElementById('i18n-bus-section-desc').innerText = t.busSectionDesc;
+            document.getElementById('i18n-bus-outbound-title').innerText = t.busOutboundTitle;
+            document.getElementById('i18n-bus-out1-loc').innerText = t.busOut1Loc;
+            document.getElementById('i18n-bus-out1-desc').innerText = t.busOut1Desc;
+            document.getElementById('i18n-bus-out2-loc').innerText = t.busOut2Loc;
+            document.getElementById('i18n-bus-out2-desc').innerText = t.busOut2Desc;
+            document.getElementById('i18n-bus-out3-loc').innerText = t.busOut3Loc;
+            document.getElementById('i18n-bus-out3-desc').innerText = t.busOut3Desc;
+            document.getElementById('i18n-bus-return-title').innerText = t.busReturnTitle;
+            document.getElementById('i18n-bus-ret1-loc').innerText = t.busRet1Loc;
+            document.getElementById('i18n-bus-ret1-desc').innerText = t.busRet1Desc;
+            document.getElementById('i18n-bus-ret2-loc').innerText = t.busRet2Loc;
+            document.getElementById('i18n-bus-ret2-desc').innerText = t.busRet2Desc;
+
+            // RSVP Titular
+            document.getElementById('i18n-rsvp-title').innerText = t.rsvpTitle;
+            document.getElementById('i18n-rsvp-desc').innerText = t.rsvpDesc;
+            updateMainCardTitle();
+            document.getElementById('i18n-label-firstname').innerText = t.labelFirstname;
+            document.getElementById('nombre').placeholder = t.placeholderFirstname;
+            document.getElementById('i18n-label-lastname1').innerText = t.labelLastname1;
+            document.getElementById('primerApellido').placeholder = t.placeholderLastname1;
+            document.getElementById('i18n-label-lastname2').innerText = t.labelLastname2;
+            document.getElementById('segundoApellido').placeholder = t.placeholderLastname2;
+
+            document.getElementById('i18n-label-attending').innerText = t.labelAttending;
+            document.getElementById('btn-attending-yes').innerText = t.radioYes;
+            document.getElementById('btn-attending-no').innerText = t.radioNo;
+
+            document.getElementById('i18n-label-bus').innerText = t.labelBus;
+            document.getElementById('btn-bus-no').innerText = t.busNo;
+            document.getElementById('btn-bus-ida').innerText = t.busIda;
+            document.getElementById('btn-bus-volta').innerText = t.busVolta;
+            document.getElementById('btn-bus-idavolta').innerText = t.busIdaVolta;
+
+            document.getElementById('i18n-label-diet-options').innerText = t.labelDietOptions;
+            document.getElementById('i18n-label-diet-detail').innerText = t.labelDietDetail;
+            document.getElementById('intoleranciasDetalle').placeholder = t.placeholderDietDetail;
+
+            document.getElementById('i18n-label-song-main').innerText = t.labelSong;
+            document.getElementById('cancion_main').placeholder = t.placeholderSong;
+            document.getElementById('i18n-label-msg-main').innerText = t.labelMsg;
+            document.getElementById('mensaje_main').placeholder = t.placeholderMsg;
+
+            document.getElementById('btnAddCompanion').innerText = t.btnAddCompanion;
+            document.getElementById('submitBtn').innerText = t.submitBtn;
+
+            renderCompanions();
+        }
+
+        // --- 2. CUENTA ATRÁS ---
+        const weddingDate = new Date('May 22, 2027 18:00:00').getTime();
+
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const difference = weddingDate - now;
+
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+                document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+                document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+                document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+            }
+        };
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // --- 3. GESTIÓN DE COLAPSABLES / ACCORDION UNIFICADO ---
+        let mainPersonOpen = true;
+
+        function updateMainCardTitle() {
+            const t = translations[currentLang];
+            const name = document.getElementById('nombre').value.trim();
+            const surname = document.getElementById('primerApellido').value.trim();
+            const titleEl = document.querySelector('#main_person_card h4');
+            if (name || surname) {
+                titleEl.innerText = `👤 ${name} ${surname}`.trim();
+            } else {
+                titleEl.innerText = t.mainPersonTitle;
+            }
+        }
+
+        function collapseAll() {
+            // Colapsar titular
+            mainPersonOpen = false;
+            document.getElementById('body_main').classList.remove('open');
+            document.getElementById('icon_main').classList.remove('rotated');
+
+            // Colapsar acompañantes
+            companions.forEach(c => {
+                c.isOpen = false;
+                const body = document.getElementById(`comp_body_${c.id}`);
+                const icon = document.getElementById(`comp_icon_${c.id}`);
+                if (body) body.classList.remove('open');
+                if (icon) icon.classList.remove('rotated');
+            });
+        }
+
+        function toggleAccordion(targetId) {
+            if (targetId === 'main') {
+                const newState = !mainPersonOpen;
+                collapseAll();
+                mainPersonOpen = newState;
+                if (mainPersonOpen) {
+                    document.getElementById('body_main').classList.add('open');
+                    document.getElementById('icon_main').classList.add('rotated');
+                }
+            } else {
+                const comp = companions.find(c => c.id === targetId);
+                if (comp) {
+                    const newState = !comp.isOpen;
+                    collapseAll();
+                    comp.isOpen = newState;
+                    const body = document.getElementById(`comp_body_${targetId}`);
+                    const icon = document.getElementById(`comp_icon_${targetId}`);
+                    if (comp.isOpen) {
+                        if (body) body.classList.add('open');
+                        if (icon) icon.classList.add('rotated');
+                    }
+                }
+            }
+        }
+
+        // --- 4. SELECCIÓN DE ASISTENCIA TITULAR ---
+        function selectAttendance(value) {
+            document.getElementById('asistencia').value = value;
+            const btnYes = document.getElementById('btn-attending-yes');
+            const btnNo = document.getElementById('btn-attending-no');
+            const conditionalFields = document.getElementById('conditionalFields');
+            const companionsSection = document.getElementById('companionsSection');
+
+            if (value === 'Sí') {
+                btnYes.className = 'btn-toggle active-green';
+                btnNo.className = 'btn-toggle';
+                conditionalFields.style.display = 'block';
+                companionsSection.style.display = 'block';
+            } else {
+                btnYes.className = 'btn-toggle';
+                btnNo.className = 'btn-toggle active-red';
+                conditionalFields.style.display = 'none';
+                companionsSection.style.display = 'none';
+            }
+        }
+
+        // --- 5. SELECCIÓN DE ASISTENCIA ACOMPAÑANTE ---
+        function selectCompanionAttendance(id, value) {
+            const comp = companions.find(c => c.id === id);
+            if (!comp) return;
+            comp.asistencia = value;
+
+            const card = document.getElementById(`comp_card_${id}`);
+            const btnYes = card.querySelector('.btn-attending-yes');
+            const btnNo = card.querySelector('.btn-attending-no');
+            const condFields = card.querySelector('.comp-conditional-fields');
+
+            if (value === 'Sí') {
+                btnYes.className = 'btn-toggle btn-attending-yes active-green';
+                btnNo.className = 'btn-toggle btn-attending-no';
+                condFields.style.display = 'block';
+            } else {
+                btnYes.className = 'btn-toggle btn-attending-yes';
+                btnNo.className = 'btn-toggle btn-attending-no active-red';
+                condFields.style.display = 'none';
+            }
+            updateCompanionCardTitle(id);
+        }
+
+        // --- 6. SELECCIÓN DE AUTOBÚS (GENÉRICA) ---
+        function selectBus(idPrefix, value) {
+            if (idPrefix === 'main') {
+                document.getElementById('autobus').value = value;
+                ['no', 'ida', 'volta', 'idavolta'].forEach(k => {
+                    document.getElementById(`btn-bus-${k}`).className = 'btn-toggle';
+                });
+                if (value === 'No') document.getElementById('btn-bus-no').className = 'btn-toggle active-red';
+                else if (value === 'Sólo ida') document.getElementById('btn-bus-ida').className = 'btn-toggle active-green';
+                else if (value === 'Sólo vuelta') document.getElementById('btn-bus-volta').className = 'btn-toggle active-green';
+                else if (value === 'Ida e volta') document.getElementById('btn-bus-idavolta').className = 'btn-toggle active-green';
+            } else {
+                // Acompañante
+                const comp = companions.find(c => c.id === idPrefix);
+                if (comp) comp.autobus = value;
+                const container = document.getElementById(`busGroup_comp_${idPrefix}`);
+                container.querySelectorAll('.btn-toggle').forEach(b => b.className = 'btn-toggle');
+                
+                const activeBtn = container.querySelector(`[data-bus="${value}"]`);
+                if (activeBtn) {
+                    if (value === 'No') activeBtn.className = 'btn-toggle active-red';
+                    else activeBtn.className = 'btn-toggle active-green';
+                }
+            }
+        }
+
+        // --- 7. SELECCIÓN DE DIETA (GENÉRICA) ---
+        function selectDiet(idPrefix, value) {
+            if (idPrefix === 'main') {
+                document.getElementById('tipoMenu').value = value;
+                const container = document.getElementById('dietGroup_main');
+                container.querySelectorAll('.btn-toggle').forEach(b => b.className = 'btn-toggle');
+                const activeBtn = container.querySelector(`[data-diet="${value}"]`);
+                if (activeBtn) {
+                    if (value === 'Ninguna') activeBtn.className = 'btn-toggle active-green';
+                    else activeBtn.className = 'btn-toggle active-primary';
+                }
+
+                const detailGroup = document.getElementById('dietaryDetailGroup_main');
+                const detailInput = document.getElementById('intoleranciasDetalle');
+                if (value === 'Alergias' || value === 'Otra') {
+                    detailGroup.style.display = 'block';
+                    detailInput.required = true;
+                } else {
+                    detailGroup.style.display = 'none';
+                    detailInput.required = false;
+                    detailInput.value = '';
+                }
+            } else {
+                // Acompañante
+                const comp = companions.find(c => c.id === idPrefix);
+                if (comp) comp.tipoMenu = value;
+
+                const container = document.getElementById(`dietGroup_comp_${idPrefix}`);
+                container.querySelectorAll('.btn-toggle').forEach(b => b.className = 'btn-toggle');
+                const activeBtn = container.querySelector(`[data-diet="${value}"]`);
+                if (activeBtn) {
+                    if (value === 'Ninguna') activeBtn.className = 'btn-toggle active-green';
+                    else activeBtn.className = 'btn-toggle active-primary';
+                }
+
+                const detailGroup = document.getElementById(`dietaryDetailGroup_comp_${idPrefix}`);
+                const detailInput = detailGroup.querySelector('input');
+                if (value === 'Alergias' || value === 'Otra') {
+                    detailGroup.style.display = 'block';
+                    if (detailInput) detailInput.required = true;
+                } else {
+                    detailGroup.style.display = 'none';
+                    if (detailInput) {
+                        detailInput.required = false;
+                        detailInput.value = '';
+                    }
+                }
+            }
+        }
+
+        // --- 8. GESTIÓN DE ACOMPAÑANTES Y COLAPSO AUTOMÁTICO ---
+        let companions = [];
+
+        function addCompanion() {
+            if (companions.length >= 4) {
+                alert(translations[currentLang].alertMaxCompanions);
+                return;
+            }
+
+            // Colapsar todos los formularios existentes
+            collapseAll();
+
+            const id = Date.now();
+            companions.push({
+                id: id,
+                nombre: '',
+                primerApellido: '',
+                segundoApellido: '',
+                asistencia: '',
+                autobus: '',
+                tipoMenu: '',
+                intoleranciasDetalle: '',
+                cancion: '',
+                mensaje: '',
+                isOpen: true // Abrir únicamente el nuevo acompañante
+            });
+            renderCompanions();
+        }
+
+        function removeCompanion(id) {
+            companions = companions.filter(c => c.id !== id);
+            renderCompanions();
+        }
+
+        function updateCompanionCardTitle(id) {
+            const comp = companions.find(c => c.id === id);
+            if (!comp) return;
+            const index = companions.findIndex(c => c.id === id);
+            const titleEl = document.getElementById(`comp_title_${id}`);
+            const t = translations[currentLang];
+            
+            let nameStr = `${comp.nombre} ${comp.primerApellido}`.trim();
+            if (!nameStr) nameStr = `${t.companionHeaderTitle} ${index + 1}`;
+            titleEl.innerText = `👤 ${nameStr}`;
+        }
+
+        function renderCompanions() {
+            const container = document.getElementById('companionsContainer');
+            container.innerHTML = '';
+            const t = translations[currentLang];
+
+            // Deshabilitar botón si se alcanza el máximo de 4
+            const addBtn = document.getElementById('btnAddCompanion');
+            if (companions.length >= 4) {
+                addBtn.style.opacity = '0.5';
+                addBtn.style.cursor = 'not-allowed';
+            } else {
+                addBtn.style.opacity = '1';
+                addBtn.style.cursor = 'pointer';
+            }
+
+            companions.forEach((comp, index) => {
+                const card = document.createElement('div');
+                card.className = 'person-card';
+                card.id = `comp_card_${comp.id}`;
+
+                let displayName = `${comp.nombre} ${comp.primerApellido}`.trim();
+                if (!displayName) displayName = `${t.companionHeaderTitle} ${index + 1}`;
+
+                card.innerHTML = `
+                    <div class="person-card-header" onclick="toggleAccordion(${comp.id})">
+                        <h4 id="comp_title_${comp.id}">👤 ${displayName}</h4>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <button type="button" class="btn-delete-companion" onclick="event.stopPropagation(); removeCompanion(${comp.id})">
+                                🗑️ ${t.labelDeleteComp}
+                            </button>
+                            <span class="toggle-icon ${comp.isOpen ? 'rotated' : ''}" id="comp_icon_${comp.id}">▼</span>
+                        </div>
+                    </div>
+
+                    <div class="person-card-body ${comp.isOpen ? 'open' : ''}" id="comp_body_${comp.id}">
+                        <div class="form-group">
+                            <label>${t.labelFirstname}</label>
+                            <input type="text" value="${comp.nombre}" oninput="companions.find(c=>c.id===${comp.id}).nombre=this.value; updateCompanionCardTitle(${comp.id});" placeholder="${t.placeholderFirstname}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>${t.labelLastname1}</label>
+                            <input type="text" value="${comp.primerApellido}" oninput="companions.find(c=>c.id===${comp.id}).primerApellido=this.value; updateCompanionCardTitle(${comp.id});" placeholder="${t.placeholderLastname1}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>${t.labelLastname2}</label>
+                            <input type="text" value="${comp.segundoApellido}" onchange="companions.find(c=>c.id===${comp.id}).segundoApellido=this.value;" placeholder="${t.placeholderLastname2}" required>
+                        </div>
+
+                        <!-- ASISTENCIA ACOMPAÑANTE -->
+                        <div class="form-group">
+                            <label>${t.labelAttending}</label>
+                            <div class="btn-group-toggle">
+                                <button type="button" class="btn-toggle btn-attending-yes ${comp.asistencia === 'Sí' ? 'active-green' : ''}" onclick="selectCompanionAttendance(${comp.id}, 'Sí')">${t.radioYes}</button>
+                                <button type="button" class="btn-toggle btn-attending-no ${comp.asistencia === 'No' ? 'active-red' : ''}" onclick="selectCompanionAttendance(${comp.id}, 'No')">${t.radioNo}</button>
+                            </div>
+                        </div>
+
+                        <div class="comp-conditional-fields" style="display: ${comp.asistencia === 'Sí' ? 'block' : 'none'};">
+                            <!-- AUTOBÚS ACOMPAÑANTE -->
+                            <div class="form-group">
+                                <label>${t.labelBus}</label>
+                                <div class="btn-group-toggle" id="busGroup_comp_${comp.id}">
+                                    <button type="button" class="btn-toggle ${comp.autobus === 'No' ? 'active-red' : ''}" data-bus="No" onclick="selectBus(${comp.id}, 'No')">${t.busNo}</button>
+                                    <button type="button" class="btn-toggle ${comp.autobus === 'Sólo ida' ? 'active-green' : ''}" data-bus="Sólo ida" onclick="selectBus(${comp.id}, 'Sólo ida')">${t.busIda}</button>
+                                    <button type="button" class="btn-toggle ${comp.autobus === 'Sólo vuelta' ? 'active-green' : ''}" data-bus="Sólo vuelta" onclick="selectBus(${comp.id}, 'Sólo vuelta')">${t.busVolta}</button>
+                                    <button type="button" class="btn-toggle ${comp.autobus === 'Ida e volta' ? 'active-green' : ''}" data-bus="Ida e volta" onclick="selectBus(${comp.id}, 'Ida e volta')">${t.busIdaVolta}</button>
+                                </div>
+                            </div>
+
+                            <!-- MENÚ ACOMPAÑANTE -->
+                            <div class="form-group">
+                                <label>${t.labelDietOptions}</label>
+                                <div class="btn-group-toggle" id="dietGroup_comp_${comp.id}">
+                                    <button type="button" class="btn-toggle ${comp.tipoMenu === 'Ninguna' ? 'active-green' : ''}" data-diet="Ninguna" onclick="selectDiet(${comp.id}, 'Ninguna')">${t.dietNinguna}</button>
+                                    <button type="button" class="btn-toggle ${comp.tipoMenu === 'Celíaco/a' ? 'active-primary' : ''}" data-diet="Celíaco/a" onclick="selectDiet(${comp.id}, 'Celíaco/a')">${t.dietCeliaco}</button>
+                                    <button type="button" class="btn-toggle ${comp.tipoMenu === 'Vexetariano/a' ? 'active-primary' : ''}" data-diet="Vexetariano/a" onclick="selectDiet(${comp.id}, 'Vexetariano/a')">${t.dietVegetariano}</button>
+                                    <button type="button" class="btn-toggle ${comp.tipoMenu === 'Vegano/a' ? 'active-primary' : ''}" data-diet="Vegano/a" onclick="selectDiet(${comp.id}, 'Vegano/a')">${t.dietVegano}</button>
+                                    <button type="button" class="btn-toggle ${comp.tipoMenu === 'Alergias' ? 'active-primary' : ''}" data-diet="Alergias" onclick="selectDiet(${comp.id}, 'Alergias')">${t.dietAlergia}</button>
+                                    <button type="button" class="btn-toggle ${comp.tipoMenu === 'Otra' ? 'active-primary' : ''}" data-diet="Otra" onclick="selectDiet(${comp.id}, 'Otra')">${t.dietOtra}</button>
+                                </div>
+
+                                <div id="dietaryDetailGroup_comp_${comp.id}" style="display:${comp.tipoMenu === 'Alergias' || comp.tipoMenu === 'Otra' ? 'block' : 'none'}; margin-top: 12px;">
+                                    <label style="font-size: 0.85rem;">${t.labelDietDetail}</label>
+                                    <input type="text" value="${comp.intoleranciasDetalle}" onchange="companions.find(c=>c.id===${comp.id}).intoleranciasDetalle=this.value;" placeholder="${t.placeholderDietDetail}">
+                                </div>
+                            </div>
+
+                            <!-- SUGERENCIA MUSICAL Y MENSAJE INDIVIDUAL DE ACOMPAÑANTE -->
+                            <div class="form-group" style="margin-top: 20px;">
+                                <label style="font-size: 0.85rem;">${t.labelSong}</label>
+                                <input type="text" value="${comp.cancion}" onchange="companions.find(c=>c.id===${comp.id}).cancion=this.value;" placeholder="${t.placeholderSong}">
+                            </div>
+
+                            <div class="form-group">
+                                <label style="font-size: 0.85rem;">${t.labelMsg}</label>
+                                <textarea rows="3" onchange="companions.find(c=>c.id===${comp.id}).mensaje=this.value;" placeholder="${t.placeholderMsg}">${comp.mensaje}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // --- 9. ENVÍO Y VALIDACIÓN ---
+        const form = document.getElementById('rsvpForm');
+        const statusMsg = document.getElementById('statusMsg');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const t = translations[currentLang];
+            const nombre = document.getElementById('nombre').value.trim();
+            const primerApellido = document.getElementById('primerApellido').value.trim();
+            const segundoApellido = document.getElementById('segundoApellido').value.trim();
+            const asistencia = document.getElementById('asistencia').value;
+
+            if (!nombre || !primerApellido || !segundoApellido || !asistencia) {
+                alert(t.alertRequired);
+                return;
+            }
+
+            if (asistencia === 'Sí') {
+                const autobus = document.getElementById('autobus').value;
+                const tipoMenu = document.getElementById('tipoMenu').value;
+
+                if (!autobus || !tipoMenu) {
+                    alert(t.alertRequired);
+                    return;
+                }
+
+                // Validar cada acompañante
+                for (let comp of companions) {
+                    if (!comp.nombre.trim() || !comp.primerApellido.trim() || !comp.segundoApellido.trim() || !comp.asistencia) {
+                        alert(t.alertRequired);
+                        return;
+                    }
+                    if (comp.asistencia === 'Sí' && (!comp.autobus || !comp.tipoMenu)) {
+                        alert(t.alertRequired);
+                        return;
+                    }
+                }
+            }
+
+            // Estructurar el JSON payload para enviar filas independientes por cada persona
+            const payload = {
+                titular: {
+                    nombre: nombre,
+                    primerApellido: primerApellido,
+                    segundoApellido: segundoApellido,
+                    asistencia: asistencia,
+                    autobus: document.getElementById('autobus').value || '',
+                    tipoMenu: document.getElementById('tipoMenu').value || '',
+                    intoleranciasDetalle: document.getElementById('intoleranciasDetalle').value || '',
+                    cancion: document.getElementById('cancion_main').value || '',
+                    mensaje: document.getElementById('mensaje_main').value || ''
+                },
+                acompanantes: companions
+            };
+
+            submitBtn.disabled = true;
+            submitBtn.innerText = t.sendingBtn;
+
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                statusMsg.className = 'status-msg status-success';
+                statusMsg.innerText = t.msgSuccess;
+                statusMsg.style.display = 'block';
+                
+                // Limpiar formulario tras envío
+                form.reset();
+                companions = [];
+                document.getElementById('asistencia').value = '';
+                document.getElementById('autobus').value = '';
+                document.getElementById('tipoMenu').value = '';
+                document.querySelectorAll('.btn-toggle').forEach(b => b.className = 'btn-toggle');
+                document.getElementById('conditionalFields').style.display = 'none';
+                document.getElementById('companionsSection').style.display = 'none';
+            })
+            .catch(error => {
+                statusMsg.className = 'status-msg status-error';
+                statusMsg.innerText = t.msgError;
+                statusMsg.style.display = 'block';
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerText = t.submitBtn;
+            });
+        });
+    </script>
+</body>
+</html>
