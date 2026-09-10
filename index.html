@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <!-- Estilos CSS -->
-	<link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -94,7 +94,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN HORARIOS DE AUTOBÚS -->
+    <!-- SECCIÓN HORARIOS DE AUTOBÚS (Cambio 6: 1 único horario de vuelta) -->
     <section id="autobuses" class="bus-section">
         <h2 class="section-title" id="i18n-bus-section-title">Servizo de Autobús</h2>
         <p class="section-desc" id="i18n-bus-section-desc">Para a vosa comodidade, poñemos á vosa disposición un servizo de autobús con parada de orixe e destino na parada de autobús do Parque de San Lázaro (Ourense).</p>
@@ -124,17 +124,12 @@
                 </div>
             </div>
 
-            <!-- Bus de Vuelta -->
+            <!-- Bus de Vuelta (Único horario: 05:00 h) -->
             <div class="bus-card">
                 <div class="bus-card-title" id="i18n-bus-return-title">
                     🚌 Autobús de Volta
                 </div>
                 <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-time">02:30 h</div>
-                        <div class="timeline-location" id="i18n-bus-ret1-loc">Primeira saída de volta</div>
-                        <div class="timeline-desc" id="i18n-bus-ret1-desc">Desde Jardines Pazo A Fábrica cara á parada do Parque de San Lázaro (Ourense)</div>
-                    </div>
                     <div class="timeline-item">
                         <div class="timeline-time">05:00 h</div>
                         <div class="timeline-location" id="i18n-bus-ret2-loc">Saída de fin de festa</div>
@@ -169,9 +164,10 @@
                         <input type="text" id="primerApellido" name="primerApellido" placeholder="O teu primeiro apelido" required oninput="updateMainCardTitle()">
                     </div>
 
+                    <!-- CAMBIO 1: Segundo apellido no obligatorio -->
                     <div class="form-group">
-                        <label for="segundoApellido" id="i18n-label-lastname2">Segundo Apelido *</label>
-                        <input type="text" id="segundoApellido" name="segundoApellido" placeholder="O teu segundo apelido" required>
+                        <label for="segundoApellido" id="i18n-label-lastname2">Segundo Apelido (Opcional)</label>
+                        <input type="text" id="segundoApellido" name="segundoApellido" placeholder="O teu segundo apelido">
                     </div>
 
                     <div class="form-group">
@@ -189,13 +185,12 @@
 
                     <!-- CAMPOS OPCIONALES TITULAR -->
                     <div id="conditionalFields" style="display:none;">
+                        <!-- CAMBIO 4: Solo 2 opciones para autobús (No e Ida/Vuelta) -->
                         <div class="form-group">
                             <label id="i18n-label-bus">¿Utilizarás o servizo de autobús desde Ourense (Parque San Lázaro)? *</label>
                             <input type="hidden" id="autobus" name="autobus">
                             <div class="btn-group-toggle">
                                 <button type="button" class="btn-toggle" id="btn-bus-no" onclick="selectBus('main', 'No')">Non</button>
-                                <button type="button" class="btn-toggle" id="btn-bus-ida" onclick="selectBus('main', 'Sólo ida')">Só ida</button>
-                                <button type="button" class="btn-toggle" id="btn-bus-volta" onclick="selectBus('main', 'Sólo vuelta')">Só volta</button>
                                 <button type="button" class="btn-toggle" id="btn-bus-idavolta" onclick="selectBus('main', 'Ida e volta')">Ida e volta</button>
                             </div>
                         </div>
@@ -217,26 +212,34 @@
                                 <input type="text" id="intoleranciasDetalle" name="intoleranciasDetalle" placeholder="Ex: Alerxía aos mariscos...">
                             </div>
                         </div>
-
-                        <div class="form-group" style="margin-top: 20px;">
-                            <label for="cancion_main" id="i18n-label-song-main">¿Que canción non pode faltar na festa? (Opcional)</label>
-                            <input type="text" id="cancion_main" name="cancion" placeholder="A túa suxestión musical">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="mensaje_main" id="i18n-label-msg-main">Información adicional a ter en conta, suxestións ou un mensaxe para os noivos (Opcional)</label>
-                            <textarea id="mensaje_main" name="mensaje" rows="3" placeholder="¡Déixanos a túa mensaxe ou calquera dato que debamos saber!"></textarea>
-                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- SECCIÓN ACOMPAÑANTES EN FORMATO DESPLEGABLE -->
-            <div id="companionsSection" style="display: none; margin-top: 30px;">
+            <!-- SECCIÓN ACOMPAÑANTE Y NIÑOS (CAMBIOS 2 y 3) -->
+            <div id="companionsSection" style="display: none; margin-top: 20px;">
                 <div id="companionsContainer"></div>
                 <button type="button" class="btn-add-companion" id="btnAddCompanion" onclick="addCompanion()">
                     ➕ Engadir acompañante
                 </button>
+
+                <div id="childrenContainer"></div>
+                <button type="button" class="btn-add-companion" id="btnAddChild" onclick="addChild()">
+                    👶 Engadir neno/a
+                </button>
+            </div>
+
+            <!-- CAMBIO 5: Preguntas de canción y mensaje a nivel global -->
+            <div id="globalQuestionsSection" style="display: none; margin-top: 30px;">
+                <div class="form-group">
+                    <label for="cancion_main" id="i18n-label-song-main">¿Que canción non pode faltar na festa? (Opcional)</label>
+                    <input type="text" id="cancion_main" name="cancion" placeholder="A túa suxestión musical">
+                </div>
+
+                <div class="form-group">
+                    <label for="mensaje_main" id="i18n-label-msg-main">Información adicional a ter en conta, suxestións ou un mensaxe para os noivos (Opcional)</label>
+                    <textarea id="mensaje_main" name="mensaje" rows="3" placeholder="¡Déixanos a túa mensaxe ou calquera dato que debamos saber!"></textarea>
+                </div>
             </div>
 
             <button type="submit" id="submitBtn" class="btn" style="width: 100%; font-size: 1rem; padding: 15px; margin-top: 25px;">Enviar Confirmación</button>
@@ -250,6 +253,6 @@
     </footer>
 
     <!-- SCRIPT PRINCIPAL -->
-	<script src="js/main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
