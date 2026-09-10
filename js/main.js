@@ -5,7 +5,7 @@ let currentLang = 'gl';
 
 async function loadTranslations() {
     try {
-        const response = await fetch('translations.json');
+        const response = await fetch('../json/translations.json');
         translations = await response.json();
         switchLanguage('gl');
     } catch (error) {

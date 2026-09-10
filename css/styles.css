@@ -131,7 +131,7 @@ header {
     text-align: center;
     padding: 20px;
     background-image: linear-gradient(to bottom, rgba(26, 20, 35, 0.55), rgba(26, 20, 35, 0.70)), 
-                      url('1000097874.jpg');
+                      url('../assets/images/1000097874.jpg');
     background-position: center 30%;
     background-size: cover;
     background-repeat: no-repeat;
