@@ -379,7 +379,7 @@ function renderCompanions() {
 
         card.innerHTML = `
             <div class="person-card-header" onclick="toggleAccordion(${comp.id})">
-                <h4 id="comp_title_${comp.id}">${displayName}</h4>
+                <h4 id="comp_title_${comp.id}">👤 ${displayName}</h4>
                 <div style="display: flex; align-items: center; gap: 15px;">
                     <button type="button" class="btn-delete-companion" onclick="event.stopPropagation(); deleteCompanion(${comp.id})">
                         🗑️ ${t.labelDeleteComp}
@@ -493,9 +493,10 @@ function renderChildren() {
         let displayName = `${ch.nombre} ${ch.primerApellido}`.trim();
         if (!displayName) displayName = `${t.childHeaderTitle} ${index + 1}`;
 
+        // CORRECCIÓN 1: Se añade el icono 👶 en el HTML inicial renderizado
         card.innerHTML = `
             <div class="person-card-header" onclick="toggleAccordion('child_${ch.id}')">
-                <h4 id="child_title_${ch.id}">${displayName}</h4>
+                <h4 id="child_title_${ch.id}">👶 ${displayName}</h4>
                 <div style="display: flex; align-items: center; gap: 15px;">
                     <button type="button" class="btn-delete-companion" onclick="event.stopPropagation(); deleteChild(${ch.id})">
                         🗑️ ${t.labelDeleteComp}
@@ -549,136 +550,138 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusMsg = document.getElementById('statusMsg');
     const submitBtn = document.getElementById('submitBtn');
 
-	form.addEventListener('submit', function(e) {
-		e.preventDefault();
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-		const t = translations[currentLang];
-		
-		// Aplicar .trim() a los campos de texto del titular
-		const nombre = document.getElementById('nombre').value.trim();
-		const primerApellido = document.getElementById('primerApellido').value.trim();
-		const segundoApellido = document.getElementById('segundoApellido').value.trim();
-		const asistencia = document.getElementById('asistencia').value;
+        const t = translations[currentLang];
+        
+        // Aplicar .trim() a los campos de texto del titular
+        const nombre = document.getElementById('nombre').value.trim();
+        const primerApellido = document.getElementById('primerApellido').value.trim();
+        const segundoApellido = document.getElementById('segundoApellido').value.trim();
+        const asistencia = document.getElementById('asistencia').value;
 
-		// 1. Validar campos obligatorios del titular
-		if (!nombre || !primerApellido || !asistencia) {
-			alert(t.alertRequired);
-			return;
-		}
+        // 1. Validar campos obligatorios del titular
+        if (!nombre || !primerApellido || !asistencia) {
+            alert(t.alertRequired);
+            return;
+        }
 
-		// 2. Si confirma asistencia, validar campos condicionales y de acompañantes/niños
-		if (asistencia === 'Sí') {
-			const autobus = document.getElementById('autobus').value;
-			const tipoMenu = document.getElementById('tipoMenu').value;
+        // 2. Si confirma asistencia, validar campos condicionales y de acompañantes/niños
+        if (asistencia === 'Sí') {
+            const autobus = document.getElementById('autobus').value;
+            const tipoMenu = document.getElementById('tipoMenu').value;
 
-			if (!autobus || !tipoMenu) {
-				alert(t.alertRequired);
-				return;
-			}
+            if (!autobus || !tipoMenu) {
+                alert(t.alertRequired);
+                return;
+            }
 
-			// Validación con .trim() para Acompañante
-			for (let comp of companions) {
-				const compNombre = (comp.nombre || '').trim();
-				const compPrimerApellido = (comp.primerApellido || '').trim();
+            // Validación con .trim() para Acompañante
+            for (let comp of companions) {
+                const compNombre = (comp.nombre || '').trim();
+                const compPrimerApellido = (comp.primerApellido || '').trim();
 
-				if (!compNombre || !compPrimerApellido || !comp.autobus || !comp.tipoMenu) {
-					alert(t.alertRequired);
-					return;
-				}
+                if (!compNombre || !compPrimerApellido || !comp.autobus || !comp.tipoMenu) {
+                    alert(t.alertRequired);
+                    return;
+                }
 
-				// Si seleccionó 'Alergias' u 'Otra', comprobar que el detalle no esté vacío ni con espacios
-				if ((comp.tipoMenu === 'Alergias' || comp.tipoMenu === 'Otra') && !(comp.intoleranciasDetalle || '').trim()) {
-					alert(t.alertRequired);
-					return;
-				}
-			}
+                if ((comp.tipoMenu === 'Alergias' || comp.tipoMenu === 'Otra') && !(comp.intoleranciasDetalle || '').trim()) {
+                    alert(t.alertRequired);
+                    return;
+                }
+            }
 
-			// Validación con .trim() para Niños
-			for (let ch of childrenList) {
-				const chNombre = (ch.nombre || '').trim();
-				const chPrimerApellido = (ch.primerApellido || '').trim();
+            // Validación con .trim() para Niños
+            for (let ch of childrenList) {
+                const chNombre = (ch.nombre || '').trim();
+                const chPrimerApellido = (ch.primerApellido || '').trim();
 
-				if (!chNombre || !chPrimerApellido || !ch.tipoMenu) {
-					alert(t.alertRequired);
-					return;
-				}
+                if (!chNombre || !chPrimerApellido || !ch.tipoMenu) {
+                    alert(t.alertRequired);
+                    return;
+                }
 
-				// Si seleccionó 'Alergias' u 'Otra', comprobar que el detalle no esté vacío ni con espacios
-				if ((ch.tipoMenu === 'Alergias' || ch.tipoMenu === 'Otra') && !(ch.intoleranciasDetalle || '').trim()) {
-					alert(t.alertRequired);
-					return;
-				}
-			}
-		}
+                if ((ch.tipoMenu === 'Alergias' || ch.tipoMenu === 'Otra') && !(ch.intoleranciasDetalle || '').trim()) {
+                    alert(t.alertRequired);
+                    return;
+                }
+            }
+        }
 
-		// Construcción del objeto a enviar con los datos limpios de espacios
-		const payload = {
-			titular: {
-				nombre: nombre,
-				primerApellido: primerApellido,
-				segundoApellido: segundoApellido,
-				asistencia: asistencia,
-				autobus: document.getElementById('autobus').value || '',
-				tipoMenu: document.getElementById('tipoMenu').value || '',
-				intoleranciasDetalle: (document.getElementById('intoleranciasDetalle').value || '').trim()
-			},
-			acompanantes: companions.map(c => ({
-				...c,
-				nombre: c.nombre.trim(),
-				primerApellido: c.primerApellido.trim(),
-				segundoApellido: (c.segundoApellido || '').trim(),
-				intoleranciasDetalle: (c.intoleranciasDetalle || '').trim()
-			})),
-			ninos: childrenList.map(ch => ({
-				...ch,
-				nombre: ch.nombre.trim(),
-				primerApellido: ch.primerApellido.trim(),
-				segundoApellido: (ch.segundoApellido || '').trim(),
-				intoleranciasDetalle: (ch.intoleranciasDetalle || '').trim()
-			})),
-			sugerenciasGlobales: {
-				cancion: (document.getElementById('cancion_main').value || '').trim(),
-				mensaje: (document.getElementById('mensaje_main').value || '').trim()
-			}
-		};
+        // Construcción del objeto a enviar
+        const payload = {
+            titular: {
+                nombre: nombre,
+                primerApellido: primerApellido,
+                segundoApellido: segundoApellido,
+                asistencia: asistencia,
+                autobus: document.getElementById('autobus').value || '',
+                tipoMenu: document.getElementById('tipoMenu').value || '',
+                intoleranciasDetalle: (document.getElementById('intoleranciasDetalle').value || '').trim()
+            },
+            acompanantes: companions.map(c => ({
+                ...c,
+                nombre: c.nombre.trim(),
+                primerApellido: c.primerApellido.trim(),
+                segundoApellido: (c.segundoApellido || '').trim(),
+                intoleranciasDetalle: (c.intoleranciasDetalle || '').trim()
+            })),
+            ninos: childrenList.map(ch => ({
+                ...ch,
+                nombre: ch.nombre.trim(),
+                primerApellido: ch.primerApellido.trim(),
+                segundoApellido: (ch.segundoApellido || '').trim(),
+                intoleranciasDetalle: (ch.intoleranciasDetalle || '').trim()
+            })),
+            sugerenciasGlobales: {
+                cancion: (document.getElementById('cancion_main').value || '').trim(),
+                mensaje: (document.getElementById('mensaje_main').value || '').trim()
+            }
+        };
 
-		submitBtn.disabled = true;
-		submitBtn.innerText = t.sendingBtn;
+        submitBtn.disabled = true;
+        submitBtn.innerText = t.sendingBtn;
 
-		fetch(GOOGLE_SCRIPT_URL, {
-			method: 'POST',
-			mode: 'no-cors',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(payload)
-		})
-		.then(() => {
-			statusMsg.className = 'status-msg status-success';
-			statusMsg.innerText = t.msgSuccess;
-			statusMsg.style.display = 'block';
-			
-			form.reset();
-			companions = [];
-			childrenList = [];
-			document.getElementById('asistencia').value = '';
-			document.getElementById('autobus').value = '';
-			document.getElementById('tipoMenu').value = '';
-			document.querySelectorAll('.btn-toggle').forEach(b => b.className = 'btn-toggle');
-			document.getElementById('conditionalFields').style.display = 'none';
-			document.getElementById('companionsSection').style.display = 'none';
-			document.getElementById('globalQuestionsSection').style.display = 'none';
-			renderCompanions();
-			renderChildren();
-		})
-		.catch(error => {
-			statusMsg.className = 'status-msg status-error';
-			statusMsg.innerText = t.msgError;
-			statusMsg.style.display = 'block';
-		})
-		.finally(() => {
-			submitBtn.disabled = false;
-			submitBtn.innerText = t.submitBtn;
-		});
-	});
+        fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        })
+        .then(() => {
+            statusMsg.className = 'status-msg status-success';
+            statusMsg.innerText = t.msgSuccess;
+            statusMsg.style.display = 'block';
+            
+            form.reset();
+            companions = [];
+            childrenList = [];
+            document.getElementById('asistencia').value = '';
+            document.getElementById('autobus').value = '';
+            document.getElementById('tipoMenu').value = '';
+            document.querySelectorAll('.btn-toggle').forEach(b => b.className = 'btn-toggle');
+            document.getElementById('conditionalFields').style.display = 'none';
+            document.getElementById('companionsSection').style.display = 'none';
+            document.getElementById('globalQuestionsSection').style.display = 'none';
+            
+            // CORRECCIÓN 2: Actualizar el título de la tarjeta principal para resetear a "👤 Invitado/a Principal"
+            updateMainCardTitle();
+
+            renderCompanions();
+            renderChildren();
+        })
+        .catch(error => {
+            statusMsg.className = 'status-msg status-error';
+            statusMsg.innerText = t.msgError;
+            statusMsg.style.display = 'block';
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerText = t.submitBtn;
+        });
+    });
 });
