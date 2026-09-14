@@ -377,9 +377,10 @@ function renderCompanions() {
         let displayName = `${comp.nombre} ${comp.primerApellido}`.trim();
         if (!displayName) displayName = t.companionHeaderTitle;
 
+        // Se elimina el icono 👤 prefijado para que updateCompanionCardTitle lo añada de forma única
         card.innerHTML = `
             <div class="person-card-header" onclick="toggleAccordion(${comp.id})">
-                <h4 id="comp_title_${comp.id}">👤 ${displayName}</h4>
+                <h4 id="comp_title_${comp.id}">${displayName}</h4>
                 <div style="display: flex; align-items: center; gap: 15px;">
                     <button type="button" class="btn-delete-companion" onclick="event.stopPropagation(); deleteCompanion(${comp.id})">
                         🗑️ ${t.labelDeleteComp}
@@ -431,6 +432,7 @@ function renderCompanions() {
             </div>
         `;
         container.appendChild(card);
+        updateCompanionCardTitle(comp.id);
     });
 }
 
@@ -493,10 +495,10 @@ function renderChildren() {
         let displayName = `${ch.nombre} ${ch.primerApellido}`.trim();
         if (!displayName) displayName = `${t.childHeaderTitle} ${index + 1}`;
 
-        // CORRECCIÓN 1: Se añade el icono 👶 en el HTML inicial renderizado
+        // Se elimina el icono 👶 prefijado para evitar la duplicación
         card.innerHTML = `
             <div class="person-card-header" onclick="toggleAccordion('child_${ch.id}')">
-                <h4 id="child_title_${ch.id}">👶 ${displayName}</h4>
+                <h4 id="child_title_${ch.id}">${displayName}</h4>
                 <div style="display: flex; align-items: center; gap: 15px;">
                     <button type="button" class="btn-delete-companion" onclick="event.stopPropagation(); deleteChild(${ch.id})">
                         🗑️ ${t.labelDeleteComp}
@@ -540,6 +542,7 @@ function renderChildren() {
             </div>
         `;
         container.appendChild(card);
+        updateChildCardTitle(ch.id);
     });
 }
 
@@ -555,19 +558,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const t = translations[currentLang];
         
-        // Aplicar .trim() a los campos de texto del titular
         const nombre = document.getElementById('nombre').value.trim();
         const primerApellido = document.getElementById('primerApellido').value.trim();
         const segundoApellido = document.getElementById('segundoApellido').value.trim();
         const asistencia = document.getElementById('asistencia').value;
 
-        // 1. Validar campos obligatorios del titular
         if (!nombre || !primerApellido || !asistencia) {
             alert(t.alertRequired);
             return;
         }
 
-        // 2. Si confirma asistencia, validar campos condicionales y de acompañantes/niños
         if (asistencia === 'Sí') {
             const autobus = document.getElementById('autobus').value;
             const tipoMenu = document.getElementById('tipoMenu').value;
@@ -577,7 +577,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Validación con .trim() para Acompañante
             for (let comp of companions) {
                 const compNombre = (comp.nombre || '').trim();
                 const compPrimerApellido = (comp.primerApellido || '').trim();
@@ -593,7 +592,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // Validación con .trim() para Niños
             for (let ch of childrenList) {
                 const chNombre = (ch.nombre || '').trim();
                 const chPrimerApellido = (ch.primerApellido || '').trim();
@@ -610,7 +608,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Construcción del objeto a enviar
         const payload = {
             titular: {
                 nombre: nombre,
@@ -668,7 +665,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('companionsSection').style.display = 'none';
             document.getElementById('globalQuestionsSection').style.display = 'none';
             
-            // CORRECCIÓN 2: Actualizar el título de la tarjeta principal para resetear a "👤 Invitado/a Principal"
             updateMainCardTitle();
 
             renderCompanions();
