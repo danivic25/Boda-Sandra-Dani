@@ -89,6 +89,23 @@ function switchLanguage(lang) {
     document.getElementById('i18n-label-diet-options').innerText = t.labelDietOptions;
     document.getElementById('i18n-label-diet-detail').innerText = t.labelDietDetail;
     document.getElementById('intoleranciasDetalle').placeholder = t.placeholderDietDetail;
+	
+	const dietGroupMain = document.getElementById('dietGroup_main');
+    if (dietGroupMain) {
+        const btnNinguna = dietGroupMain.querySelector('[data-diet="Ninguna"]');
+        const btnCeliaco = dietGroupMain.querySelector('[data-diet="Celíaco/a"]');
+        const btnVegetariano = dietGroupMain.querySelector('[data-diet="Vexetariano/a"], [data-diet="Vegetariano/a"]');
+        const btnVegano = dietGroupMain.querySelector('[data-diet="Vegano/a"]');
+        const btnAlergias = dietGroupMain.querySelector('[data-diet="Alergias"]');
+        const btnOtra = dietGroupMain.querySelector('[data-diet="Otra"]');
+
+        if (btnNinguna) btnNinguna.innerText = t.dietNinguna;
+        if (btnCeliaco) btnCeliaco.innerText = t.dietCeliaco;
+        if (btnVegetariano) btnVegetariano.innerText = t.dietVegetariano;
+        if (btnVegano) btnVegano.innerText = t.dietVegano;
+        if (btnAlergias) btnAlergias.innerText = t.dietAlergia;
+        if (btnOtra) btnOtra.innerText = t.dietOtra;
+    }
 
     document.getElementById('i18n-label-song-main').innerText = t.labelSong;
     document.getElementById('cancion_main').placeholder = t.placeholderSong;
