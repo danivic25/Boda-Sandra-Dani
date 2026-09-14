@@ -339,7 +339,7 @@ function addCompanion() {
     renderCompanions();
 }
 
-function removeCompanion(id) {
+function deleteCompanion(id) {
     companions = companions.filter(c => c.id !== id);
     renderCompanions();
 }
@@ -381,7 +381,7 @@ function renderCompanions() {
             <div class="person-card-header" onclick="toggleAccordion(${comp.id})">
                 <h4 id="comp_title_${comp.id}">👤 ${displayName}</h4>
                 <div style="display: flex; align-items: center; gap: 15px;">
-                    <button type="button" class="btn-delete-companion" onclick="event.stopPropagation(); removeCompanion(${comp.id})">
+                    <button type="button" class="btn-delete-companion" onclick="event.stopPropagation(); deleteCompanion(${comp.id})">
                         🗑️ ${t.labelDeleteComp}
                     </button>
                     <span class="toggle-icon ${comp.isOpen ? 'rotated' : ''}" id="comp_icon_${comp.id}">▼</span>
@@ -454,7 +454,7 @@ function addChild() {
     renderChildren();
 }
 
-function removeChild(id) {
+function deleteChild(id) {
     children = children.filter(c => c.id !== id);
     renderChildren();
 }
@@ -497,7 +497,7 @@ function renderChildren() {
             <div class="person-card-header" onclick="toggleAccordion('child_${ch.id}')">
                 <h4 id="child_title_${ch.id}">👶 ${displayName}</h4>
                 <div style="display: flex; align-items: center; gap: 15px;">
-                    <button type="button" class="btn-delete-companion" onclick="event.stopPropagation(); removeChild(${ch.id})">
+                    <button type="button" class="btn-delete-companion" onclick="event.stopPropagation(); deleteChild(${ch.id})">
                         🗑️ ${t.labelDeleteComp}
                     </button>
                     <span class="toggle-icon ${ch.isOpen ? 'rotated' : ''}" id="child_icon_${ch.id}">▼</span>
