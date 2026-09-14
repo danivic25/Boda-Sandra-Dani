@@ -153,7 +153,7 @@ function collapseAll() {
         if (icon) icon.classList.remove('rotated');
     });
 
-    children.forEach(ch => {
+    childrenList.forEach(ch => {
         ch.isOpen = false;
         const body = document.getElementById(`child_body_${ch.id}`);
         const icon = document.getElementById(`child_icon_${ch.id}`);
@@ -173,7 +173,7 @@ function toggleAccordion(targetId) {
         }
     } else if (typeof targetId === 'string' && targetId.startsWith('child_')) {
         const rawId = parseInt(targetId.replace('child_', ''));
-        const ch = children.find(c => c.id === rawId);
+        const ch = childrenList.find(c => c.id === rawId);
         if (ch) {
             const newState = !ch.isOpen;
             collapseAll();
@@ -268,7 +268,7 @@ function selectDiet(idPrefix, value) {
         }
     } else if (typeof idPrefix === 'string' && idPrefix.startsWith('child_')) {
         const rawId = parseInt(idPrefix.replace('child_', ''));
-        const ch = children.find(c => c.id === rawId);
+        const ch = childrenList.find(c => c.id === rawId);
         if (ch) ch.tipoMenu = value;
 
         const container = document.getElementById(`dietGroup_${idPrefix}`);
@@ -435,14 +435,14 @@ function renderCompanions() {
 }
 
 // GESTIÓN DE NIÑOS (Máximo 2)
-let children = [];
+let childrenList = [];
 
 function addChild() {
-    if (children.length >= 2) return;
+    if (childrenList.length >= 2) return;
 
     collapseAll();
     const id = Date.now();
-    children.push({
+    childrenList.push({
         id: id,
         nombre: '',
         primerApellido: '',
@@ -455,15 +455,15 @@ function addChild() {
 }
 
 function deleteChild(id) {
-    children = children.filter(c => c.id !== id);
+    childrenList = childrenList.filter(c => c.id !== id);
     renderChildren();
 }
 
 function updateChildCardTitle(id) {
     if (!translations[currentLang]) return;
-    const ch = children.find(c => c.id === id);
+    const ch = childrenList.find(c => c.id === id);
     if (!ch) return;
-    const index = children.findIndex(c => c.id === id);
+    const index = childrenList.findIndex(c => c.id === id);
     const titleEl = document.getElementById(`child_title_${id}`);
     const t = translations[currentLang];
     
@@ -479,13 +479,13 @@ function renderChildren() {
     const t = translations[currentLang];
 
     const addBtn = document.getElementById('btnAddChild');
-    if (children.length >= 2) {
+    if (childrenList.length >= 2) {
         addBtn.style.display = 'none';
     } else {
         addBtn.style.display = 'block';
     }
 
-    children.forEach((ch, index) => {
+    childrenList.forEach((ch, index) => {
         const card = document.createElement('div');
         card.className = 'person-card';
         card.id = `child_card_${ch.id}`;
@@ -507,15 +507,15 @@ function renderChildren() {
             <div class="person-card-body ${ch.isOpen ? 'open' : ''}" id="child_body_${ch.id}">
                 <div class="form-group">
                     <label>${t.labelFirstname}</label>
-                    <input type="text" value="${ch.nombre}" oninput="children.find(c=>c.id===${ch.id}).nombre=this.value; updateChildCardTitle(${ch.id});" placeholder="${t.placeholderFirstname}" required>
+                    <input type="text" value="${ch.nombre}" oninput="childrenList.find(c=>c.id===${ch.id}).nombre=this.value; updateChildCardTitle(${ch.id});" placeholder="${t.placeholderFirstname}" required>
                 </div>
                 <div class="form-group">
                     <label>${t.labelLastname1}</label>
-                    <input type="text" value="${ch.primerApellido}" oninput="children.find(c=>c.id===${ch.id}).primerApellido=this.value; updateChildCardTitle(${ch.id});" placeholder="${t.placeholderLastname1}" required>
+                    <input type="text" value="${ch.primerApellido}" oninput="childrenList.find(c=>c.id===${ch.id}).primerApellido=this.value; updateChildCardTitle(${ch.id});" placeholder="${t.placeholderLastname1}" required>
                 </div>
                 <div class="form-group">
                     <label>${t.labelLastname2}</label>
-                    <input type="text" value="${ch.segundoApellido}" onchange="children.find(c=>c.id===${ch.id}).segundoApellido=this.value;" placeholder="${t.placeholderLastname2}">
+                    <input type="text" value="${ch.segundoApellido}" onchange="childrenList.find(c=>c.id===${ch.id}).segundoApellido=this.value;" placeholder="${t.placeholderLastname2}">
                 </div>
 
                 <div class="child-conditional-fields">
@@ -532,7 +532,7 @@ function renderChildren() {
 
                         <div id="dietaryDetailGroup_child_${ch.id}" style="display:${ch.tipoMenu === 'Alergias' || ch.tipoMenu === 'Otra' ? 'block' : 'none'}; margin-top: 12px;">
                             <label style="font-size: 0.85rem;">${t.labelDietDetail}</label>
-                            <input type="text" value="${ch.intoleranciasDetalle}" onchange="children.find(c=>c.id===${ch.id}).intoleranciasDetalle=this.value;" placeholder="${t.placeholderDietDetail}">
+                            <input type="text" value="${ch.intoleranciasDetalle}" onchange="childrenList.find(c=>c.id===${ch.id}).intoleranciasDetalle=this.value;" placeholder="${t.placeholderDietDetail}">
                         </div>
                     </div>
                 </div>
@@ -583,7 +583,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            for (let ch of children) {
+            for (let ch of childrenList) {
                 if (!ch.nombre.trim() || !ch.primerApellido.trim()) {
                     alert(t.alertRequired);
                     return;
@@ -606,7 +606,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 intoleranciasDetalle: document.getElementById('intoleranciasDetalle').value || ''
             },
             acompanantes: companions,
-            ninos: children,
+            ninos: childrenList,
             sugerenciasGlobales: {
                 cancion: document.getElementById('cancion_main').value || '',
                 mensaje: document.getElementById('mensaje_main').value || ''
@@ -631,7 +631,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             form.reset();
             companions = [];
-            children = [];
+            childrenList = [];
             document.getElementById('asistencia').value = '';
             document.getElementById('autobus').value = '';
             document.getElementById('tipoMenu').value = '';
