@@ -1,4 +1,4 @@
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyxrIBbepFUU_swfVEw4zsYMJILUboDtHmhLwO5cMkcxPSoppza0q7boK-MFioGjPnh/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyRFarrvYeDds21r3tMzVW8VDFQG1RCgGQeevU_nkD04_OsIlq5DsYA6SvREZ7draie/exec";
 
 let translations = {};
 let currentLang = 'gl';
@@ -224,51 +224,6 @@ function selectAttendance(value) {
     }
 }
 
-function selectCompanionAttendance(id, value) {
-    const comp = companions.find(c => c.id === id);
-    if (!comp) return;
-    comp.asistencia = value;
-
-    const card = document.getElementById(`comp_card_${id}`);
-    const btnYes = card.querySelector('.btn-attending-yes');
-    const btnNo = card.querySelector('.btn-attending-no');
-    const condFields = card.querySelector('.comp-conditional-fields');
-
-    if (value === 'Sí') {
-        btnYes.className = 'btn-toggle btn-attending-yes active-green';
-        btnNo.className = 'btn-toggle btn-attending-no';
-        condFields.style.display = 'block';
-    } else {
-        btnYes.className = 'btn-toggle btn-attending-yes';
-        btnNo.className = 'btn-toggle btn-attending-no active-red';
-        condFields.style.display = 'none';
-    }
-    updateCompanionCardTitle(id);
-}
-
-function selectChildAttendance(id, value) {
-    const ch = children.find(c => c.id === id);
-    if (!ch) return;
-    ch.asistencia = value;
-
-    const card = document.getElementById(`child_card_${id}`);
-    const btnYes = card.querySelector('.btn-attending-yes');
-    const btnNo = card.querySelector('.btn-attending-no');
-    const condFields = card.querySelector('.child-conditional-fields');
-
-    if (value === 'Sí') {
-        btnYes.className = 'btn-toggle btn-attending-yes active-green';
-        btnNo.className = 'btn-toggle btn-attending-no';
-        condFields.style.display = 'block';
-    } else {
-        btnYes.className = 'btn-toggle btn-attending-yes';
-        btnNo.className = 'btn-toggle btn-attending-no active-red';
-        condFields.style.display = 'none';
-    }
-    updateChildCardTitle(id);
-}
-
-// CAMBIO 4: Selección simplificada para el autobús
 function selectBus(idPrefix, value) {
     if (idPrefix === 'main') {
         document.getElementById('autobus').value = value;
@@ -363,7 +318,7 @@ function selectDiet(idPrefix, value) {
     }
 }
 
-// CAMBIO 2: Máximo 1 acompañante adulto
+// GESTIÓN DE ACOMPAÑANTE (Máximo 1)
 let companions = [];
 
 function addCompanion() {
@@ -376,7 +331,6 @@ function addCompanion() {
         nombre: '',
         primerApellido: '',
         segundoApellido: '',
-        asistencia: '',
         autobus: '',
         tipoMenu: '',
         intoleranciasDetalle: '',
@@ -410,13 +364,9 @@ function renderCompanions() {
 
     const addBtn = document.getElementById('btnAddCompanion');
     if (companions.length >= 1) {
-        addBtn.disabled = true;
-        addBtn.style.opacity = '0.5';
-        addBtn.style.cursor = 'not-allowed';
+        addBtn.style.display = 'none';
     } else {
-        addBtn.disabled = false;
-        addBtn.style.opacity = '1';
-        addBtn.style.cursor = 'pointer';
+        addBtn.style.display = 'block';
     }
 
     companions.forEach((comp) => {
@@ -452,15 +402,7 @@ function renderCompanions() {
                     <input type="text" value="${comp.segundoApellido}" onchange="companions.find(c=>c.id===${comp.id}).segundoApellido=this.value;" placeholder="${t.placeholderLastname2}">
                 </div>
 
-                <div class="form-group">
-                    <label>${t.labelAttending}</label>
-                    <div class="btn-group-toggle">
-                        <button type="button" class="btn-toggle btn-attending-yes ${comp.asistencia === 'Sí' ? 'active-green' : ''}" onclick="selectCompanionAttendance(${comp.id}, 'Sí')">${t.radioYes}</button>
-                        <button type="button" class="btn-toggle btn-attending-no ${comp.asistencia === 'No' ? 'active-red' : ''}" onclick="selectCompanionAttendance(${comp.id}, 'No')">${t.radioNo}</button>
-                    </div>
-                </div>
-
-                <div class="comp-conditional-fields" style="display: ${comp.asistencia === 'Sí' ? 'block' : 'none'};">
+                <div class="comp-conditional-fields">
                     <div class="form-group">
                         <label>${t.labelBus}</label>
                         <div class="btn-group-toggle" id="busGroup_comp_${comp.id}">
@@ -492,7 +434,7 @@ function renderCompanions() {
     });
 }
 
-// CAMBIO 3: Gestión de niños (Máximo 2 niños y sin preguntas de autobús)
+// GESTIÓN DE NIÑOS (Máximo 2)
 let children = [];
 
 function addChild() {
@@ -505,7 +447,6 @@ function addChild() {
         nombre: '',
         primerApellido: '',
         segundoApellido: '',
-        asistencia: '',
         tipoMenu: '',
         intoleranciasDetalle: '',
         isOpen: true
@@ -539,13 +480,9 @@ function renderChildren() {
 
     const addBtn = document.getElementById('btnAddChild');
     if (children.length >= 2) {
-        addBtn.disabled = true;
-        addBtn.style.opacity = '0.5';
-        addBtn.style.cursor = 'not-allowed';
+        addBtn.style.display = 'none';
     } else {
-        addBtn.disabled = false;
-        addBtn.style.opacity = '1';
-        addBtn.style.cursor = 'pointer';
+        addBtn.style.display = 'block';
     }
 
     children.forEach((ch, index) => {
@@ -581,16 +518,7 @@ function renderChildren() {
                     <input type="text" value="${ch.segundoApellido}" onchange="children.find(c=>c.id===${ch.id}).segundoApellido=this.value;" placeholder="${t.placeholderLastname2}">
                 </div>
 
-                <div class="form-group">
-                    <label>${t.labelAttending}</label>
-                    <div class="btn-group-toggle">
-                        <button type="button" class="btn-toggle btn-attending-yes ${ch.asistencia === 'Sí' ? 'active-green' : ''}" onclick="selectChildAttendance(${ch.id}, 'Sí')">${t.radioYes}</button>
-                        <button type="button" class="btn-toggle btn-attending-no ${ch.asistencia === 'No' ? 'active-red' : ''}" onclick="selectChildAttendance(${ch.id}, 'No')">${t.radioNo}</button>
-                    </div>
-                </div>
-
-                <!-- Sin pregunta de autobús para niños -->
-                <div class="child-conditional-fields" style="display: ${ch.asistencia === 'Sí' ? 'block' : 'none'};">
+                <div class="child-conditional-fields">
                     <div class="form-group">
                         <label>${t.labelDietOptions}</label>
                         <div class="btn-group-toggle" id="dietGroup_child_${ch.id}">
@@ -645,22 +573,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             for (let comp of companions) {
-                if (!comp.nombre.trim() || !comp.primerApellido.trim() || !comp.asistencia) {
+                if (!comp.nombre.trim() || !comp.primerApellido.trim()) {
                     alert(t.alertRequired);
                     return;
                 }
-                if (comp.asistencia === 'Sí' && (!comp.autobus || !comp.tipoMenu)) {
+                if (!comp.autobus || !comp.tipoMenu) {
                     alert(t.alertRequired);
                     return;
                 }
             }
 
             for (let ch of children) {
-                if (!ch.nombre.trim() || !ch.primerApellido.trim() || !ch.asistencia) {
+                if (!ch.nombre.trim() || !ch.primerApellido.trim()) {
                     alert(t.alertRequired);
                     return;
                 }
-                if (ch.asistencia === 'Sí' && !ch.tipoMenu) {
+                if (!ch.tipoMenu) {
                     alert(t.alertRequired);
                     return;
                 }
@@ -711,6 +639,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('conditionalFields').style.display = 'none';
             document.getElementById('companionsSection').style.display = 'none';
             document.getElementById('globalQuestionsSection').style.display = 'none';
+            renderCompanions();
+            renderChildren();
         })
         .catch(error => {
             statusMsg.className = 'status-msg status-error';

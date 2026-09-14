@@ -94,7 +94,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN HORARIOS DE AUTOBÚS (Cambio 6: 1 único horario de vuelta) -->
+    <!-- SECCIÓN HORARIOS DE AUTOBÚS -->
     <section id="autobuses" class="bus-section">
         <h2 class="section-title" id="i18n-bus-section-title">Servizo de Autobús</h2>
         <p class="section-desc" id="i18n-bus-section-desc">Para a vosa comodidade, poñemos á vosa disposición un servizo de autobús con parada de orixe e destino na parada de autobús do Parque de San Lázaro (Ourense).</p>
@@ -124,7 +124,7 @@
                 </div>
             </div>
 
-            <!-- Bus de Vuelta (Único horario: 05:00 h) -->
+            <!-- Bus de Vuelta -->
             <div class="bus-card">
                 <div class="bus-card-title" id="i18n-bus-return-title">
                     🚌 Autobús de Volta
@@ -164,7 +164,6 @@
                         <input type="text" id="primerApellido" name="primerApellido" placeholder="O teu primeiro apelido" required oninput="updateMainCardTitle()">
                     </div>
 
-                    <!-- CAMBIO 1: Segundo apellido no obligatorio -->
                     <div class="form-group">
                         <label for="segundoApellido" id="i18n-label-lastname2">Segundo Apelido (Opcional)</label>
                         <input type="text" id="segundoApellido" name="segundoApellido" placeholder="O teu segundo apelido">
@@ -185,7 +184,6 @@
 
                     <!-- CAMPOS OPCIONALES TITULAR -->
                     <div id="conditionalFields" style="display:none;">
-                        <!-- CAMBIO 4: Solo 2 opciones para autobús (No e Ida/Vuelta) -->
                         <div class="form-group">
                             <label id="i18n-label-bus">Utilizarás o servizo de autobús desde Ourense (Parque San Lázaro)? *</label>
                             <input type="hidden" id="autobus" name="autobus">
@@ -216,7 +214,7 @@
                 </div>
             </div>
 
-            <!-- SECCIÓN ACOMPAÑANTE Y NIÑOS (CAMBIOS 2 y 3) -->
+            <!-- SECCIÓN ACOMPAÑANTE Y NIÑOS -->
             <div id="companionsSection" style="display: none; margin-top: 20px;">
                 <div id="companionsContainer"></div>
                 <button type="button" class="btn-add-companion" id="btnAddCompanion" onclick="addCompanion()">
@@ -229,7 +227,7 @@
                 </button>
             </div>
 
-            <!-- CAMBIO 5: Preguntas de canción y mensaje a nivel global -->
+            <!-- PREGUNTAS GLOBALES -->
             <div id="globalQuestionsSection" style="display: none; margin-top: 30px;">
                 <div class="form-group">
                     <label for="cancion_main" id="i18n-label-song-main">Que canción non pode faltar na festa? (Opcional)</label>
