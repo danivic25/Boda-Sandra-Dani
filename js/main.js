@@ -379,7 +379,7 @@ function renderCompanions() {
 
         card.innerHTML = `
             <div class="person-card-header" onclick="toggleAccordion(${comp.id})">
-                <h4 id="comp_title_${comp.id}">👤 ${displayName}</h4>
+                <h4 id="comp_title_${comp.id}">${displayName}</h4>
                 <div style="display: flex; align-items: center; gap: 15px;">
                     <button type="button" class="btn-delete-companion" onclick="event.stopPropagation(); deleteCompanion(${comp.id})">
                         🗑️ ${t.labelDeleteComp}
@@ -495,7 +495,7 @@ function renderChildren() {
 
         card.innerHTML = `
             <div class="person-card-header" onclick="toggleAccordion('child_${ch.id}')">
-                <h4 id="child_title_${ch.id}">👶 ${displayName}</h4>
+                <h4 id="child_title_${ch.id}">${displayName}</h4>
                 <div style="display: flex; align-items: center; gap: 15px;">
                     <button type="button" class="btn-delete-companion" onclick="event.stopPropagation(); deleteChild(${ch.id})">
                         🗑️ ${t.labelDeleteComp}
