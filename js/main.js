@@ -353,6 +353,9 @@ function updateCompanionCardTitle(id) {
     
     let nameStr = `${comp.nombre} ${comp.primerApellido}`.trim();
     if (!nameStr) nameStr = t.companionHeaderTitle;
+    
+    // Limpiar posibles iconos duplicados previos antes de asignar
+    nameStr = nameStr.replace(/^[👤\s]+/, '').trim();
     titleEl.innerText = `👤 ${nameStr}`;
 }
 
@@ -374,13 +377,9 @@ function renderCompanions() {
         card.className = 'person-card';
         card.id = `comp_card_${comp.id}`;
 
-        let displayName = `${comp.nombre} ${comp.primerApellido}`.trim();
-        if (!displayName) displayName = t.companionHeaderTitle;
-
-        // Se elimina el icono 👤 prefijado para que updateCompanionCardTitle lo añada de forma única
         card.innerHTML = `
             <div class="person-card-header" onclick="toggleAccordion(${comp.id})">
-                <h4 id="comp_title_${comp.id}">${displayName}</h4>
+                <h4 id="comp_title_${comp.id}"></h4>
                 <div style="display: flex; align-items: center; gap: 15px;">
                     <button type="button" class="btn-delete-companion" onclick="event.stopPropagation(); deleteCompanion(${comp.id})">
                         🗑️ ${t.labelDeleteComp}
@@ -471,6 +470,9 @@ function updateChildCardTitle(id) {
     
     let nameStr = `${ch.nombre} ${ch.primerApellido}`.trim();
     if (!nameStr) nameStr = `${t.childHeaderTitle} ${index + 1}`;
+    
+    // Limpiar posibles iconos duplicados previos antes de asignar
+    nameStr = nameStr.replace(/^[👶\s]+/, '').trim();
     titleEl.innerText = `👶 ${nameStr}`;
 }
 
@@ -487,18 +489,14 @@ function renderChildren() {
         addBtn.style.display = 'block';
     }
 
-    childrenList.forEach((ch, index) => {
+    childrenList.forEach((ch) => {
         const card = document.createElement('div');
         card.className = 'person-card';
         card.id = `child_card_${ch.id}`;
 
-        let displayName = `${ch.nombre} ${ch.primerApellido}`.trim();
-        if (!displayName) displayName = `${t.childHeaderTitle} ${index + 1}`;
-
-        // Se elimina el icono 👶 prefijado para evitar la duplicación
         card.innerHTML = `
             <div class="person-card-header" onclick="toggleAccordion('child_${ch.id}')">
-                <h4 id="child_title_${ch.id}">${displayName}</h4>
+                <h4 id="child_title_${ch.id}"></h4>
                 <div style="display: flex; align-items: center; gap: 15px;">
                     <button type="button" class="btn-delete-companion" onclick="event.stopPropagation(); deleteChild(${ch.id})">
                         🗑️ ${t.labelDeleteComp}
