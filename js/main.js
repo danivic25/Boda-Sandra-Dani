@@ -50,6 +50,7 @@ function switchLanguage(lang) {
     document.getElementById('i18n-where-desc').innerText = t.whereDesc;
     document.getElementById('i18n-ceremony-tag').innerText = t.ceremonyTag;
     document.getElementById('i18n-ceremony-place').innerText = t.ceremonyPlace;
+	document.getElementById('i18n-reception-place').innerText = t.receptionPlace;
     document.getElementById('i18n-reception-tag').innerText = t.receptionTag;
     document.getElementById('i18n-reception-time').innerText = t.receptionTime;
     document.getElementById('i18n-btn-maps-1').innerText = t.btnMaps;
