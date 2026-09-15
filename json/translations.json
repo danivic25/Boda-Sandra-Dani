@@ -34,11 +34,11 @@
     "busRet2Loc": "Salida de fin de fiesta (05:00 h)",
     "busRet2Desc": "Desde Jardines Pazo A Fábrica hacia la parada del Parque de San Lázaro (Ourense)",
 	
-	"photosTitle": "Fotos & Vídeos dos Invitados",
+	"photosTitle": "Fotos & Vídeos de los Invitados",
     "photosDesc": "¡Queremos ver el día a través de vuestros ojos! Escanea el código QR o entra al enlace para subir tus recuerdos del gran día.",
     "btnOpenUpload": "Subir fotos y vídeos",
     "btnCopyLink": "Copiar enlace",
-    "msgLinkCopied": "¡Enlace copiado!",
+    "msgLinkCopied": "¡Enlace copiado al portapapeles!",
 
     "rsvpTitle": "Confirmación de Asistencia",
     "rsvpDesc": "Por favor, confirma tu asistencia antes del 1 de mayo de 2027 para ayudarnos a organizarlo todo.",
@@ -118,10 +118,10 @@
     "busRet2Desc": "Desde Xardíns Pazo A Fábrica cara á parada do Parque de San Lázaro (Ourense)",
 	
 	"photosTitle": "Fotos & Vídeos dos Invitados",
-    "photosDesc": "¡Queremos ver el día a través de vuestros ojos! Escanea el código QR o entra al enlace para subir tus recuerdos del gran día.",
+    "photosDesc": "Queremos ver o día a través de vosos ollos! Escanea o código QR ou entra no enlace para subir os teus recordos do gran día.",
     "btnOpenUpload": "Subir fotos y vídeos",
     "btnCopyLink": "Copiar enlace",
-    "msgLinkCopied": "¡Enlace copiado al portapapeles!",
+    "msgLinkCopied": "Enlace copiado ó portapapeis!",
 
     "rsvpTitle": "Confirmación de Asistencia",
     "rsvpDesc": "Por favor, confirma a túa asistencia antes do 1 de maio de 2027 para axudarnos a organizalo todo.",
