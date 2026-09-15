@@ -1,4 +1,5 @@
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyRFarrvYeDds21r3tMzVW8VDFQG1RCgGQeevU_nkD04_OsIlq5DsYA6SvREZ7draie/exec";
+const WEDUPLOADER_URL = "https://weduploader.com/boda-sandra-dani/fotos-videos-invitados";
 
 let translations = {};
 let currentLang = 'gl';
@@ -21,6 +22,21 @@ function toggleNavMenu() {
 function closeNavMenu() {
     const nav = document.getElementById('navLinks');
     nav.classList.remove('open');
+}
+
+function copyUploadLink() {
+    const t = translations[currentLang];
+    navigator.clipboard.writeText(WEDUPLOADER_URL).then(() => {
+        const notice = document.getElementById('copyNotice');
+        notice.innerText = t.msgLinkCopied;
+        notice.classList.add('show');
+        
+        setTimeout(() => {
+            notice.classList.remove('show');
+        }, 3000);
+    }).catch(err => {
+        console.error("Error al copiar el enlace:", err);
+    });
 }
 
 function switchLanguage(lang) {
@@ -68,6 +84,11 @@ function switchLanguage(lang) {
     document.getElementById('i18n-bus-return-title').innerText = t.busReturnTitle;
     document.getElementById('i18n-bus-ret2-loc').innerText = t.busRet2Loc;
     document.getElementById('i18n-bus-ret2-desc').innerText = t.busRet2Desc;
+	
+    document.getElementById('i18n-photos-title').innerText = t.photosTitle;
+    document.getElementById('i18n-photos-desc').innerText = t.photosDesc;
+    document.getElementById('i18n-btn-open-upload').innerText = t.btnOpenUpload;
+    document.getElementById('i18n-btn-copy-link').innerText = `📋 ${t.btnCopyLink}`;
 
     document.getElementById('i18n-rsvp-title').innerText = t.rsvpTitle;
     document.getElementById('i18n-rsvp-desc').innerText = t.rsvpDesc;
