@@ -79,9 +79,12 @@ function switchLanguage(lang) {
     document.getElementById('i18n-bus-out1-desc').innerText = t.busOut1Desc;
     document.getElementById('i18n-bus-out2-loc').innerText = t.busOut2Loc;
     document.getElementById('i18n-bus-out2-desc').innerText = t.busOut2Desc;
+	document.getElementById('i18n-bus-out3-time').innerText = t.busOut3Time;
     document.getElementById('i18n-bus-out3-loc').innerText = t.busOut3Loc;
     document.getElementById('i18n-bus-out3-desc').innerText = t.busOut3Desc;
     document.getElementById('i18n-bus-return-title').innerText = t.busReturnTitle;
+	document.getElementById('i18n-bus-ret1-loc').innerText = t.busRet1Loc;
+    document.getElementById('i18n-bus-ret1-desc').innerText = t.busRet1Desc;
     document.getElementById('i18n-bus-ret2-loc').innerText = t.busRet2Loc;
     document.getElementById('i18n-bus-ret2-desc').innerText = t.busRet2Desc;
 	
