@@ -401,7 +401,6 @@ section {
     height: 220px;
     display: block;
     object-fit: contain;
-    filter: invert(29%) sepia(43%) saturate(1638%) hue-rotate(192deg) brightness(92%) contrast(88%);
 }
 
 .photos-actions {
