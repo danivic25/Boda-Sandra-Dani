@@ -1,12 +1,13 @@
 :root {
-    --color-primary: #8b2665;
-    --color-primary-dark: #631746;
-    --color-secondary: #1a365d;
-    --color-accent: #d4af37;
-    --color-bg: #fcf8fa;
+    /* Paleta inspirada en la acuarela */
+    --color-primary: #2b5392;          /* Azul cobalto / corbata */
+    --color-primary-dark: #1d3a68;     /* Azul profundo */
+    --color-secondary: #2d3748;        /* Gris noche / azulado */
+    --color-accent: #d98a72;           /* Cobre suave / mejilla acuarela */
+    --color-bg: #fafbfc;              /* Blanco acuarela de fondo */
     --color-card: #ffffff;
-    --color-text: #2c3e50;
-    --color-text-light: #666666;
+    --color-text: #2d3748;
+    --color-text-light: #64748b;
     --color-success: #28a745;
     --color-danger: #dc3545;
     --font-serif: 'Cormorant Garamond', serif;
@@ -36,6 +37,7 @@ h1, h2, h3, h4 {
     font-weight: 400;
 }
 
+/* NAVBAR */
 nav.navbar {
     position: fixed;
     top: 0;
@@ -43,13 +45,13 @@ nav.navbar {
     width: 100%;
     height: 70px;
     background: #ffffff;
-    border-bottom: 1px solid rgba(139, 38, 101, 0.15);
+    border-bottom: 1px solid rgba(43, 83, 146, 0.15);
     z-index: 9999;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 30px;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
 }
 
 .nav-logo {
@@ -90,7 +92,7 @@ nav.navbar {
 }
 
 .lang-switch-container {
-    background: rgba(139, 38, 101, 0.08);
+    background: rgba(43, 83, 146, 0.08);
     border-radius: 20px;
     padding: 3px;
     display: flex;
@@ -121,6 +123,7 @@ nav.navbar {
     gap: 15px;
 }
 
+/* CABECERA (HERO) ADAPTADA A LA ILUSTRACIÓN */
 header {
     position: relative;
     height: calc(100vh - 70px);
@@ -130,12 +133,13 @@ header {
     align-items: center;
     text-align: center;
     padding: 20px;
-    background-image: linear-gradient(to bottom, rgba(26, 20, 35, 0.55), rgba(26, 20, 35, 0.70)), 
-                      url('../assets/images/1000097874.jpg');
-    background-position: center 30%;
+    /* Degradado blanco/suave sobre la ilustración */
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.75)), 
+                      url('../assets/images/portada_ilustracion.jpg'); /* Guarda tu foto con este nombre */
+    background-position: center 25%;
     background-size: cover;
     background-repeat: no-repeat;
-    color: white;
+    color: var(--color-secondary);
     overflow: hidden;
 }
 
@@ -143,45 +147,48 @@ header p.subtitle {
     font-size: 1.2rem;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: #f5e6f0;
+    color: var(--color-primary);
+    font-weight: 600;
     margin-bottom: 10px;
 }
 
 header h1 {
     font-size: 4.2rem;
-    color: #ffffff;
+    color: var(--color-primary-dark);
     margin-bottom: 15px;
-    text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8);
 }
 
 header .date-badge {
     font-size: 1.4rem;
     font-family: var(--font-serif);
-    border-top: 1px solid rgba(255, 255, 255, 0.8);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+    border-top: 1px solid var(--color-primary);
+    border-bottom: 1px solid var(--color-primary);
     padding: 8px 25px;
     letter-spacing: 2px;
-    color: #ffffff;
+    color: var(--color-primary);
+    font-weight: 600;
 }
 
 header .start-info {
     margin-top: 15px;
     font-size: 1.1rem;
     letter-spacing: 1px;
-    color: #f8f9fa;
-    font-weight: 400;
+    color: var(--color-secondary);
+    font-weight: 500;
 }
 
 .countdown-container {
     margin-top: 30px;
     display: flex;
     gap: 20px;
-    background: rgba(139, 38, 101, 0.35);
+    background: rgba(43, 83, 146, 0.88);
     padding: 15px 30px;
     border-radius: 12px;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 25px rgba(43, 83, 146, 0.2);
 }
 
 .countdown-item {
@@ -195,14 +202,13 @@ header .start-info {
     font-size: 2.8rem;
     font-weight: 600;
     color: #ffffff;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 .countdown-label {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: #f3e5f0;
+    color: #e2eaf8;
 }
 
 section {
@@ -234,8 +240,8 @@ section {
     background: var(--color-card);
     border-radius: 12px;
     padding: 35px 25px;
-    box-shadow: 0 10px 30px rgba(139, 38, 101, 0.08);
-    border: 1px solid #f2e2ed;
+    box-shadow: 0 10px 30px rgba(43, 83, 146, 0.08);
+    border: 1px solid #e1e8f5;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -258,7 +264,7 @@ section {
 
 .location-card .time-badge {
     display: inline-block;
-    background-color: #f8eaf3;
+    background-color: #eaf0fa;
     color: var(--color-primary);
     font-weight: 600;
     font-size: 0.95rem;
@@ -289,16 +295,16 @@ section {
 .btn:hover {
     background-color: var(--color-primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(139, 38, 101, 0.25);
+    box-shadow: 0 4px 12px rgba(43, 83, 146, 0.25);
 }
 
-.bus-section {
+.bus-section, .photos-section {
     background: #ffffff;
     border-radius: 20px;
     padding: 50px 30px;
     margin: 40px auto;
-    box-shadow: 0 10px 30px rgba(139, 38, 101, 0.06);
-    border: 1px solid #f0dfeb;
+    box-shadow: 0 10px 30px rgba(43, 83, 146, 0.06);
+    border: 1px solid #e1e8f5;
 }
 
 .bus-timeline-grid {
@@ -310,10 +316,10 @@ section {
 }
 
 .bus-card {
-    background: #fdf8fb;
+    background: #f8fafc;
     border-radius: 15px;
     padding: 25px;
-    border: 1px solid #ebd3e3;
+    border: 1px solid #dbe4f3;
     position: relative;
 }
 
@@ -324,7 +330,7 @@ section {
     display: flex;
     align-items: center;
     gap: 10px;
-    border-bottom: 2px solid #e8d0e0;
+    border-bottom: 2px solid #dbe4f3;
     padding-bottom: 10px;
 }
 
@@ -373,15 +379,7 @@ section {
     color: var(--color-text-light);
 }
 
-.photos-section {
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 50px 30px;
-    margin: 40px auto;
-    box-shadow: 0 10px 30px rgba(139, 38, 101, 0.06);
-    border: 1px solid #f0dfeb;
-}
-
+/* SECCIÓN FOTOS */
 .photos-card {
     display: flex;
     flex-direction: column;
@@ -394,8 +392,8 @@ section {
     background: #ffffff;
     padding: 15px;
     border-radius: 16px;
-    box-shadow: 0 4px 15px rgba(139, 38, 101, 0.12);
-    border: 1px solid #f0dfeb;
+    box-shadow: 0 4px 15px rgba(43, 83, 146, 0.12);
+    border: 1px solid #e1e8f5;
 }
 
 .qr-img {
@@ -426,7 +424,7 @@ section {
 }
 
 .btn-secondary:hover {
-    background-color: #fdf5f9;
+    background-color: #f2f6fc;
     color: var(--color-primary-dark);
 }
 
@@ -443,13 +441,14 @@ section {
     opacity: 1;
 }
 
+/* RSVP FORM */
 .rsvp-section {
-    background-color: #f7ebf3;
+    background-color: #f2f6fc;
     border-radius: 20px;
     padding: 60px 30px;
     max-width: 800px;
     margin: 40px auto 80px;
-    border: 1px solid #eed3e5;
+    border: 1px solid #d0deef;
 }
 
 .form-group {
@@ -470,7 +469,7 @@ section {
 .form-group textarea {
     width: 100%;
     padding: 12px 15px;
-    border: 1px solid #dcc0d4;
+    border: 1px solid #b8cae0;
     border-radius: 8px;
     font-family: inherit;
     font-size: 1rem;
@@ -482,7 +481,7 @@ section {
 .form-group textarea:focus {
     outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(139, 38, 101, 0.15);
+    box-shadow: 0 0 0 3px rgba(43, 83, 146, 0.15);
 }
 
 .btn-group-toggle {
@@ -497,7 +496,7 @@ section {
     min-width: 120px;
     padding: 12px 14px;
     background-color: white;
-    border: 2px solid #dcc0d4;
+    border: 2px solid #b8cae0;
     border-radius: 10px;
     color: var(--color-secondary);
     font-family: var(--font-sans);
@@ -510,7 +509,7 @@ section {
 
 .btn-toggle:hover {
     border-color: var(--color-primary);
-    background-color: #fdf5f9;
+    background-color: #f8fafd;
 }
 
 .btn-toggle.active-green {
@@ -531,12 +530,12 @@ section {
     background-color: var(--color-primary) !important;
     border-color: var(--color-primary) !important;
     color: white !important;
-    box-shadow: 0 4px 12px rgba(139, 38, 101, 0.3);
+    box-shadow: 0 4px 12px rgba(43, 83, 146, 0.3);
 }
 
 .person-card {
     background: #ffffff;
-    border: 1px solid #dcc0d4;
+    border: 1px solid #b8cae0;
     border-radius: 12px;
     margin-bottom: 20px;
     overflow: hidden;
@@ -545,19 +544,19 @@ section {
 }
 
 .person-card-header {
-    background: #fdf5f9;
+    background: #f8fafd;
     padding: 18px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
     user-select: none;
-    border-bottom: 1px solid #f0d5e6;
+    border-bottom: 1px solid #e1e8f5;
     transition: background 0.3s ease;
 }
 
 .person-card-header:hover {
-    background: #f8ebf3;
+    background: #eef3fa;
 }
 
 .person-card-header h4 {
@@ -620,7 +619,7 @@ section {
 }
 
 .btn-add-companion:hover {
-    background-color: #fcf2f8;
+    background-color: #f2f6fc;
 }
 
 .status-msg {
@@ -661,7 +660,7 @@ footer {
         background: #ffffff;
         flex-direction: column;
         gap: 0;
-        border-bottom: 1px solid rgba(139, 38, 101, 0.15);
+        border-bottom: 1px solid rgba(43, 83, 146, 0.15);
         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         display: none;
         padding: 10px 0;
@@ -672,7 +671,7 @@ footer {
         display: block;
         padding: 12px 0;
         width: 100%;
-        border-bottom: 1px solid #f8ebf3;
+        border-bottom: 1px solid #eaf0fa;
     }
     header h1 { font-size: 2.8rem; }
     .countdown-container { gap: 10px; padding: 10px 15px; }
