@@ -85,8 +85,6 @@ function switchLanguage(lang) {
     document.getElementById('i18n-bus-return-title').innerText = t.busReturnTitle;
 	document.getElementById('i18n-bus-ret1-loc').innerText = t.busRet1Loc;
     document.getElementById('i18n-bus-ret1-desc').innerText = t.busRet1Desc;
-    document.getElementById('i18n-bus-ret2-loc').innerText = t.busRet2Loc;
-    document.getElementById('i18n-bus-ret2-desc').innerText = t.busRet2Desc;
 	
     document.getElementById('i18n-photos-title').innerText = t.photosTitle;
     document.getElementById('i18n-photos-desc').innerText = t.photosDesc;
@@ -145,7 +143,7 @@ function switchLanguage(lang) {
     renderChildren();
 }
 
-const weddingDate = new Date('May 22, 2027 18:00:00').getTime();
+const weddingDate = new Date('May 22, 2027 13:00:00').getTime();
 
 const updateCountdown = () => {
     const now = new Date().getTime();
