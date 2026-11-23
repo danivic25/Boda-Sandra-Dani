@@ -48,6 +48,13 @@ function switchLanguage(lang) {
     if (!translations[lang]) return;
     const t = translations[lang];
 	
+	Actualizar estado visual del selector de idioma (funciona en ambas páginas)
+    const btnEs = document.getElementById('btn-es') || document.querySelector('.lang-btn[onclick*="\'es\'"]');
+    const btnGl = document.getElementById('btn-gl') || document.querySelector('.lang-btn[onclick*="\'gl\'"]');
+    if (btnEs) btnEs.classList.toggle('active', lang === 'es');
+    if (btnGl) btnGl.classList.toggle('active', lang === 'gl');
+    document.documentElement.lang = lang;
+	
 	if (isSubpage) {
         // Traducciones específicas de /confirmacion-ticket/
         document.title = t.ticketPageTitle;
@@ -55,10 +62,6 @@ function switchLanguage(lang) {
         updateCountdown();
         return;
     }
-
-    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
-    document.getElementById('btn-gl').classList.toggle('active', lang === 'gl');
-    document.documentElement.lang = lang;
 
     document.title = t.title;
 
