@@ -81,7 +81,7 @@
     "sendingBtn": "Enviando...",
     "alertRequired": "Por favor, rellena todos los campos obligatorios (*).",
     "msgSuccess": "¡Gracias por confirmar! Hemos recibido tus datos correctamente.",
-    "msgError": "Hubo un error al enviar la respuesta. Por favor, inténtalo de nuevo."
+    "msgError": "Hubo un error al enviar la respuesta. Por favor, inténtalo de nuevo.",
 	
 	"ticketPageTitle": "Confirmación Ticket | Sandra & Dani",
     "ticketLockedTitle": "¡Ups... todavía no!",
@@ -173,7 +173,7 @@
     "sendingBtn": "Enviando...",
     "alertRequired": "Por favor, enche todos os campos obrigatorios (*).",
     "msgSuccess": "Grazas por confirmar! Recibimos os teus datos correctamente.",
-    "msgError": "Houbo un erro ao enviar a resposta. Por favor, inténtao de novo."
+    "msgError": "Houbo un erro ao enviar a resposta. Por favor, inténtao de novo.",
 	
 	"ticketPageTitle": "Confirmación Ticket | Sandra & Dani",
     "ticketLockedTitle": "Ups... aínda non!",
