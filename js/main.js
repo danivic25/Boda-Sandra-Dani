@@ -48,7 +48,7 @@ function switchLanguage(lang) {
     if (!translations[lang]) return;
     const t = translations[lang];
 	
-	Actualizar estado visual del selector de idioma (funciona en ambas páginas)
+	//Actualizar estado visual del selector de idioma (funciona en ambas páginas)
     const btnEs = document.getElementById('btn-es') || document.querySelector('.lang-btn[onclick*="\'es\'"]');
     const btnGl = document.getElementById('btn-gl') || document.querySelector('.lang-btn[onclick*="\'gl\'"]');
     if (btnEs) btnEs.classList.toggle('active', lang === 'es');
