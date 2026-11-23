@@ -680,58 +680,58 @@ footer {
     .bus-timeline-grid { grid-template-columns: 1fr; }
     .btn-toggle { min-width: 100%; }
 	
-	
-	/* SECCIÓN CONFIRMACIÓN TICKET */
-	.ticket-wrapper {
-		min-height: calc(100vh - 70px);
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		padding: 30px 20px;
-		text-align: center;
-	}
+}
 
-	.ticket-card {
-		background: #ffffff;
-		border: 1px solid #d0deef;
-		border-radius: 20px;
-		padding: 45px 30px;
-		max-width: 620px;
-		width: 100%;
-		box-shadow: 0 12px 35px rgba(43, 83, 146, 0.1);
-	}
+/* SECCIÓN CONFIRMACIÓN TICKET */
+.ticket-wrapper {
+	min-height: calc(100vh - 70px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 30px 20px;
+	text-align: center;
+}
 
-	.ticket-icon {
-		font-size: 3rem;
-		margin-bottom: 15px;
-	}
+.ticket-card {
+	background: #ffffff;
+	border: 1px solid #d0deef;
+	border-radius: 20px;
+	padding: 45px 30px;
+	max-width: 620px;
+	width: 100%;
+	box-shadow: 0 12px 35px rgba(43, 83, 146, 0.1);
+}
 
-	.ticket-title {
-		font-family: var(--font-serif);
-		font-size: 2.5rem;
-		color: var(--color-primary);
-		margin-bottom: 15px;
-		line-height: 1.2;
-	}
+.ticket-icon {
+	font-size: 3rem;
+	margin-bottom: 15px;
+}
 
-	.ticket-message {
-		font-size: 1.1rem;
-		color: var(--color-secondary);
-		font-weight: 500;
-		margin-bottom: 25px;
-		line-height: 1.6;
-	}
+.ticket-title {
+	font-family: var(--font-serif);
+	font-size: 2.5rem;
+	color: var(--color-primary);
+	margin-bottom: 15px;
+	line-height: 1.2;
+}
 
-	.ticket-countdown {
-		margin: 0 auto 30px;
-		justify-content: center;
-		background: rgba(43, 83, 146, 0.88);
-	}
+.ticket-message {
+	font-size: 1.1rem;
+	color: var(--color-secondary);
+	font-weight: 500;
+	margin-bottom: 25px;
+	line-height: 1.6;
+}
 
-	.ticket-date-hint {
-		font-size: 0.9rem;
-		color: var(--color-text-light);
-		margin-bottom: 25px;
-	}
+.ticket-countdown {
+	margin: 0 auto 30px;
+	justify-content: center;
+	background: rgba(43, 83, 146, 0.88);
+}
+
+.ticket-date-hint {
+	font-size: 0.9rem;
+	color: var(--color-text-light);
+	margin-bottom: 25px;
 }
