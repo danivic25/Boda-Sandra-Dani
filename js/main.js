@@ -52,7 +52,6 @@ function switchLanguage(lang) {
         // Traducciones específicas de /confirmacion-ticket/
         document.title = t.ticketPageTitle;
 		document.getElementById('i18n-ticket-btn-back').innerText = t.navWhere;
-        setTextIfExists('i18n-ticket-btn-back', t.ticketBtnBack);
         updateCountdown();
         return;
     }
