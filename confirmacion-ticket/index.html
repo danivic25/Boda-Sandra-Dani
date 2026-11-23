@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación Ticket | Sandra & Dani</title>
+    <!-- Fuentes elegantes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Estilos CSS compartidos -->
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="navbar">
+        <div class="nav-left-group">
+            <a href="../index.html" class="nav-logo">S & D</a>
+        </div>
+
+        <div class="lang-switch-container">
+            <button class="lang-btn" id="btn-es" onclick="switchLanguage('es')">ES</button>
+            <button class="lang-btn active" id="btn-gl" onclick="switchLanguage('gl')">GL</button>
+        </div>
+    </nav>
+
+    <!-- CONTENIDO DEL TICKET / CUENTA ATRÁS -->
+    <main class="ticket-wrapper" id="ticketWrapper">
+        <div class="ticket-card">
+            <div class="ticket-icon" id="ticketIcon">🕵️‍♂️🎟️</div>
+            <h1 class="ticket-title" id="i18n-ticket-title">Ups... aínda non!</h1>
+            <p class="ticket-message" id="i18n-ticket-message">
+                Non intentes ir de listiño. Este QR non servirá ata o propio día da voda.
+            </p>
+
+            <!-- Cuenta atrás compartida -->
+            <div class="countdown-container ticket-countdown" id="countdownBox">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label" id="i18n-cd-days">Días</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label" id="i18n-cd-hours">Horas</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label" id="i18n-cd-min">Min</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label" id="i18n-cd-sec">Seg</span>
+                </div>
+            </div>
+
+            <p class="ticket-date-hint" id="i18n-ticket-date-hint">
+                Dispoñible a partir do 22 de maio de 2027
+            </p>
+
+            <a href="../index.html" class="btn" id="i18n-ticket-btn-back">Volver á web da voda</a>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Sandra & Dani — 22.05.2027</p>
+    </footer>
+
+    <!-- SCRIPT PRINCIPAL COMPARTIDO -->
+    <script src="../js/main.js"></script>
+</body>
+</html>

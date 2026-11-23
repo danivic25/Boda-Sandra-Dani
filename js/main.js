@@ -1,14 +1,18 @@
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyRFarrvYeDds21r3tMzVW8VDFQG1RCgGQeevU_nkD04_OsIlq5DsYA6SvREZ7draie/exec";
 const WEDUPLOADER_URL = "https://weduploader.com/boda-sandra-dani/fotos-videos-invitados";
 
+// Detecta si estamos en una subcarpeta (como /confirmacion-ticket/) para cargar el JSON correctamente
+const isSubpage = Boolean(document.getElementById('ticketWrapper'));
+const TRANSLATIONS_PATH = isSubpage ? '../json/translations.json' : 'json/translations.json';
+
 let translations = {};
 let currentLang = 'gl';
 
 async function loadTranslations() {
     try {
-        const response = await fetch('json/translations.json');
+        const response = await fetch(TRANSLATIONS_PATH);
         translations = await response.json();
-        switchLanguage('gl');
+        switchLanguage(currentLang);
     } catch (error) {
         console.error("Error cargando el archivo translations.json:", error);
     }
@@ -43,6 +47,15 @@ function switchLanguage(lang) {
     currentLang = lang;
     if (!translations[lang]) return;
     const t = translations[lang];
+	
+	if (isSubpage) {
+        // Traducciones específicas de /confirmacion-ticket/
+        document.title = t.ticketPageTitle;
+		document.getElementById('i18n-ticket-btn-back').innerText = t.navWhere;
+        setTextIfExists('i18n-ticket-btn-back', t.ticketBtnBack);
+        updateCountdown();
+        return;
+    }
 
     document.getElementById('btn-es').classList.toggle('active', lang === 'es');
     document.getElementById('btn-gl').classList.toggle('active', lang === 'gl');
@@ -148,6 +161,7 @@ const weddingDate = new Date('May 22, 2027 13:00:00').getTime();
 const updateCountdown = () => {
     const now = new Date().getTime();
     const difference = weddingDate - now;
+	const t = translations[currentLang];
 
     if (difference > 0) {
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
@@ -159,6 +173,21 @@ const updateCountdown = () => {
         document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
         document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
         document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+		
+		if (isSubpage && t) {
+			document.getElementById('i18n-ticket-title').innerText = t.ticketLockedTitle;
+			document.getElementById('i18n-ticket-message').innerText = t.ticketLockedMsg;
+			document.getElementById('i18n-ticket-date-hint').innerText = t.ticketDateHint;
+        }
+    
+	} else if (isSubpage && t) {
+        const countdownBox = document.getElementById('countdownBox');
+        const dateHint = document.getElementById('i18n-ticket-date-hint');
+        if (countdownBox) countdownBox.style.display = 'none';
+        if (dateHint) dateHint.style.display = 'none';
+		document.getElementById('ticketIcon').innerText = '🥂🎉';
+		document.getElementById('i18n-ticket-title').innerText = t.ticketUnlockedTitle;
+		document.getElementById('i18n-ticket-message').innerText = t.ticketUnlockedMsg;
     }
 };
 
@@ -588,6 +617,8 @@ document.addEventListener('DOMContentLoaded', () => {
     loadTranslations();
 
     const form = document.getElementById('rsvpForm');
+	if (!form) return; // Evita ejecutar el código del formulario si no existe en la página actual
+	
     const statusMsg = document.getElementById('statusMsg');
     const submitBtn = document.getElementById('submitBtn');
 

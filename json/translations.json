@@ -82,6 +82,14 @@
     "alertRequired": "Por favor, rellena todos los campos obligatorios (*).",
     "msgSuccess": "¡Gracias por confirmar! Hemos recibido tus datos correctamente.",
     "msgError": "Hubo un error al enviar la respuesta. Por favor, inténtalo de nuevo."
+	
+	"ticketPageTitle": "Confirmación Ticket | Sandra & Dani",
+    "ticketLockedTitle": "¡Ups... todavía no!",
+    "ticketLockedMsg": "No intentes ir de listillo. Este QR no servirá hasta el propio día de la boda.",
+    "ticketDateHint": "Disponible a partir del 22 de mayo de 2027",
+    "ticketUnlockedTitle": "¡Llegó el gran día!",
+    "ticketUnlockedMsg": "¡Bienvenido/a a la boda de Sandra & Dani! Ya puedes validar tu ticket.",
+    "ticketBtnBack": "Volver a la web de la boda"
   },
   "gl": {
     "title": "Boda de Sandra & Dani | 22.05.2027",
@@ -166,5 +174,13 @@
     "alertRequired": "Por favor, enche todos os campos obrigatorios (*).",
     "msgSuccess": "Grazas por confirmar! Recibimos os teus datos correctamente.",
     "msgError": "Houbo un erro ao enviar a resposta. Por favor, inténtao de novo."
+	
+	"ticketPageTitle": "Confirmación Ticket | Sandra & Dani",
+    "ticketLockedTitle": "Ups... aínda non!",
+    "ticketLockedMsg": "Non intentes ir de listiño. Este QR non servirá ata o propio día da voda.",
+    "ticketDateHint": "Dispoñible a partir do 22 de maio de 2027",
+    "ticketUnlockedTitle": "Chegou o gran día!",
+    "ticketUnlockedMsg": "Benvido/a á voda de Sandra & Dani! Xa podes validar o teu ticket.",
+    "ticketBtnBack": "Volver á web da voda"
   }
 }
