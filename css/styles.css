@@ -735,3 +735,18 @@ footer {
 	color: var(--color-text-light);
 	margin-bottom: 25px;
 }
+
+.ticket-gif-container {
+    margin: 0 auto 20px;
+    max-width: 260px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 2px solid #d0deef;
+    box-shadow: 0 6px 18px rgba(43, 83, 146, 0.12);
+}
+
+.ticket-gif {
+    width: 100%;
+    height: auto;
+    display: block;
+}
